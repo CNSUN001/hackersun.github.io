@@ -1,0 +1,4 @@
+﻿  text7.c
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets(1092,5): error MSB6006: “link.exe”已退出，代码为 1120。
+MSVCRTD.lib(exe_main.obj) : error LNK2019: 无法解析的外部符号 main，函数 "int __cdecl invoke_main(void)" (?invoke_main@@YAHXZ) 中引用了该符号
+D:\code\text7\x64\Debug\text7.exe : fatal error LNK1120: 1 个无法解析的外部命令
