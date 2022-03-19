@@ -84,14 +84,15 @@
 	//}
 
 
-int main()
-{
-	int arr[10] = { 0 };
-	printf("%d\n", sizeof(arr));//计算数组总大小单位是字节
-	printf("%d\n", sizeof((arr[0])));
-	int size = sizeof(arr) / sizeof(arr[0]);//数组元素个数
-	printf("%d\n", size);
+//int main()
+//{
+//	int arr[10] = { 0 };
+//	printf("%d\n", sizeof(arr));//计算数组总大小单位是字节
+//	printf("%d\n", sizeof((arr[0])));
+//	int size = sizeof(arr) / sizeof(arr[0]);//数组元素个数
+//	printf("%d\n", size);
+//
+//
+//	return 0;
+//}
 
-
-	return 0;
-}
