@@ -160,13 +160,108 @@
 // 
 //	return 0;
 //}
-int main()
-{
-	//大量频繁被使用的数据，想放在寄存器中，提升效率
-	//register int num = 100;//建议num的值存放在寄存器中，现在意义不大。
-	//计算机中数据可以存储在 寄存器很小 高速缓存几十MB 内存16G 硬盘 1T      
+//int main()
+//{
+//	//大量频繁被使用的数据，想放在寄存器中，提升效率
+//	//register int num = 100;//建议num的值存放在寄存器中，现在意义不大。
+//	//计算机中数据可以存储在 寄存器很小 高速缓存几十MB 内存16G 硬盘 1T      
+//
+//	
+//
+//	return 0;
+//}
 
-	
 
-	return 0;
-}
+//typedef 类型重定义  
+//typedef unsigned int uint; //类别大名张三，取个小名小三
+//int main()
+//{
+//	unsigned int num = 100;
+//	uint num2 = 100;//与上式一样
+//
+//	return 0;
+//}
+
+//static-静态的的
+//1 static 修饰局部变量
+//2 static 修饰全局变量
+//3 static 修饰函数
+
+
+//1 static 修饰局部变量
+// void test()
+//{
+//	 static int a = 1;
+//	 //static修饰局部变量，a出范围不销毁，即改变了局部变量的生命周期（本质改变了存储类型）
+//	a++;
+//	printf("%d\n", a);
+//}
+//int main()
+//{
+//	int i = 0;
+//	while (i < 10)
+//	{
+//		test();//调用创建的text函数
+//		i++;                                                       
+//
+//	}
+//
+//	return 0;
+//}
+//
+
+
+//2 static 修饰全局变量
+////extern声明外部符号，全局变量整个工程都可以使用
+//extern int g_val;
+//int main()
+//{
+//	printf("%d\n", g_val);
+//	//static修饰全局变量。使得全局变量只能在自己所在的源文件内部可以使用其他不能使用
+//	//全局变量在其他源文件内部可以别使用，是因为全局变量有外部链接属性，被static修饰之后就变成了内部链接属性，其他源文件就不能链接全局变量了！
+//	return 0;
+//}
+
+
+
+//3 static 修饰函数
+//声明函数
+//extern int add(int x, int y);
+//int main()
+//{
+//	int a = 10;
+//	int b = 20;
+//	int sum = add(a, b);
+//	printf("sum=%d\n", sum); 
+//	//static 修饰函数 使得函数只能在自己所在源文件内部使用，不能在其他源文件内部使用
+//	//本质上static是将函数的外部链接属性，变成内部链接属性 跟static修饰全局变量一样
+//	return 0;
+//}
+
+
+//define 是预处理指令
+//1 define定义符号
+
+//#define MAX 1000
+//int main()
+//{
+//	printf("%d\n", MAX);
+//
+//	return 0;
+//
+//}
+
+
+//2 define 定义宏 重点
+//#define add(x,y) x+y
+//int main()
+//{
+//	printf("%d\n", 4*add(2, 3));//运算实际过程4*2+3=11，宏是完成替换的作用，所以在定义宏的时候要考虑运算顺序
+//	return 0;
+//}
+#define add(x,y) ((x)+(y))
+//int main()
+//{
+//	printf("%d\n", 4 * add(2 ,3));//得到20
+//	return 0;
+//}

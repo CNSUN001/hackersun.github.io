@@ -1,0 +1,16 @@
+﻿  text12.c
+D:\hackersun.github.io\c progrmming\text 13 pointer\text12.c(56,9): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 1 拥有了类型“size_t”
+D:\hackersun.github.io\c progrmming\text 13 pointer\text12.c(56,9): message : 请考虑在格式字符串中使用“%zd”
+D:\hackersun.github.io\c progrmming\text 13 pointer\text12.c(57,9): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 1 拥有了类型“size_t”
+D:\hackersun.github.io\c progrmming\text 13 pointer\text12.c(57,9): message : 请考虑在格式字符串中使用“%zd”
+D:\hackersun.github.io\c progrmming\text 13 pointer\text12.c(58,9): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 1 拥有了类型“size_t”
+D:\hackersun.github.io\c progrmming\text 13 pointer\text12.c(58,9): message : 请考虑在格式字符串中使用“%zd”
+D:\hackersun.github.io\c progrmming\text 13 pointer\text12.c(59,9): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 1 拥有了类型“size_t”
+D:\hackersun.github.io\c progrmming\text 13 pointer\text12.c(59,9): message : 请考虑在格式字符串中使用“%zd”
+D:\hackersun.github.io\c progrmming\text 13 pointer\text12.c(60,9): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 1 拥有了类型“size_t”
+D:\hackersun.github.io\c progrmming\text 13 pointer\text12.c(60,9): message : 请考虑在格式字符串中使用“%zd”
+D:\hackersun.github.io\c progrmming\text 13 pointer\text12.c(61,9): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 1 拥有了类型“size_t”
+D:\hackersun.github.io\c progrmming\text 13 pointer\text12.c(61,9): message : 请考虑在格式字符串中使用“%zd”
+D:\hackersun.github.io\c progrmming\text 13 pointer\text12.c(62,9): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 1 拥有了类型“size_t”
+D:\hackersun.github.io\c progrmming\text 13 pointer\text12.c(62,9): message : 请考虑在格式字符串中使用“%zd”
+  text 13 pointer.vcxproj -> D:\hackersun.github.io\c progrmming\text 13 pointer\x64\Debug\text 13 pointer.exe
