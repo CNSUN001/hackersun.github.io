@@ -19,6 +19,10 @@ int main()
 	int len =strlen("abc");//string length 没有引用头文件会警告要引用#include <string.h> "\0"仅仅只是结束标志不算长度里
 	printf("%d\n", len);
 	printf("%d\n", strlen(arr2));//打印15时是随机值找到\0为止
+	printf("%d\n", sizeof(arr1));
+	printf("%d\n", sizeof(arr2));
+
+
 	//printf("%d\n", strlen(arr1));
 	//printf("%d\n", strlen(arr2));
 

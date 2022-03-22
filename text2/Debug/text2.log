@@ -1,0 +1,3 @@
+﻿  text2.c
+D:\hackersun.github.io\text2\text2.c(16,27): warning C4133: “函数”: 从“int [10]”到“const char *”的类型不兼容
+  text2.vcxproj -> D:\hackersun.github.io\text2\Debug\text2.exe

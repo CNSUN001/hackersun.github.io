@@ -1,1 +1,2 @@
 D:\code\text2\x64\Debug\text2.exe
+D:\hackersun.github.io\text2\x64\Debug\text2.exe
