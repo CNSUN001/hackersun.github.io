@@ -1,24 +1,25 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include <stdio.h>
+
 //累乘
-//int main()
-//{
-//	int n = 0;
-//	int i = 1;
-//	int s = 1;
-//	scanf("%d", &n);
-//	while (i <= n)
-//	{
-//		
-//		s = d * i;
-//		i++;
-//		
-//	
-//	}
-//	printf("%d\n", s);
-//
-//	return 0;
-//}
+int main()
+{
+	int n = 0;
+	int i = 1;
+	int s = 1;
+	scanf("%d", &n);
+	while (i <= n)
+	{
+		
+		s = s * i;
+		i++;
+		
+	
+	}
+	printf("%d\n", s);
+
+	return 0;
+}
 
 //int main()
 //{
@@ -196,16 +197,60 @@
 //}
 
 
+//#include <string.h>
+//#include  <windows.h>
+//
+////多个字符冲两端移动，向中间汇聚
+//int main()
+//{
+//	char arr1[] = "welcome to bit!!!!!!";
+//	char arr2[] = "####################";
+//
+//	int left = 0;//设置左下标
+//	int right = strlen(arr1) - 1; //设置右下标
+//
+//	while (left<=right)
+//	{
+//		arr2[right] = arr1[right];
+//		arr2[left] = arr1[left];
+//		printf("%s\n", arr2);//%s字符串型格式符
+//		Sleep(1000);//<window.h>  windows 使用Sleep，参数为毫秒  睡眠1s
+//		system("cls");//清空屏幕
+//		left++;
+//		right--;
+//	}
+//	
+//	return 0;
+//}
 
 
-//多个字符冲两端移动，向中间汇聚
-int main()
-{
-	char arr1[] = "welcome to c!!!!!!!!";
-	char arr2[] = "!!!!!!!!!!!!!!!!!!!!";
 
-	int left = 0;//设置左下表
-	int right = strlen(arr1) - 1;
-
-	return 0;
-}
+//#include <string.h>
+////最多登录3次的密码系统
+//int main()
+//{
+//	int i = 0;
+//	//假设正确的密码是字符串“123456”
+//	char password[20] = { 0 };
+//	for (i = 0; i < 3; i++)
+//	{
+//		printf("请输入密码：>");
+//		scanf("%s", password);
+//		//if (password=="123456")//err —两个字符串比较，不能使用==，应该用strcmp
+//		if (strcmp(password, "123456")== 0)
+//			//strcmp 判断password 和 123456是否相等  本质比对应位置ASCII码
+//		{
+//			printf("登录成功\n");
+//			break;
+//		}
+//		else
+//		{
+//			printf("重新输入\n");
+//		}
+//	}
+//	if (3 == i)
+//	{
+//		printf("三次密码错误");
+//	}
+//	return 0;
+//}
