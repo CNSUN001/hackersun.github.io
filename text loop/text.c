@@ -174,24 +174,204 @@
 //}
 
 //最小公倍数
-int main()
+//int main()
+//{
+//	int m = 0;
+//	int n = 0;
+//	int min = 0;
+//	scanf("%d%d", &m, &n);
+//	if (m > n)
+//	{
+//		min = m;
+//	}
+//	else
+//	{
+//		min = n;
+//	}
+//	while (min % m /*!= 0*/ || min % n /*!= 0*/)
+//	{
+//		min++;
+//	}
+//	printf("%d\n", min);
+//	return 0;
+//}
+
+//打印1000到2000的闰年
+//int main()
+//{
+//	int n = 0;
+//	int court = 0;
+//	for (n = 1000; n <= 2000; n++)
+//	{
+//		if (n % 4 == 0)
+//		{
+//			if (n % 100 != 0)
+//			{
+//				printf("%d ", n);
+//				court++;
+//			}
+//		}
+//		 if (n % 400 == 0)
+//		{
+//			printf("%d ", n);
+//			court++;
+//		}
+//		
+//	}
+//	printf("court=%d ", court);
+//	return 0;
+//}
+//int main()
+//{
+//	int n = 0;
+//	int court = 0;
+//	for (n = 1000; n <= 2000; n++)
+//	{
+//		if (n % 4 == 0)
+//		{
+//			if (n % 100 != 0)
+//			{
+//				printf("%d ", n);
+//				court++;
+//			}
+//			else if (n % 400 == 0)
+//			{
+//				printf("%d ", n);
+//				court++;
+//			}
+//		}
+//		
+//
+//	}
+//	printf("court=%d ", court);
+//	return 0;
+//}
+
+//打印100-200素数
+//int main()
+//{
+//	int i = 1;
+//	for (i = 100; i <= 200; i++)
+//	{
+//		//2 ->i-1 之前的数字去试除i，看能不能整除
+//		int j = 0;
+//		for (j = 2; j < i; j++)
+//		{
+//			if (i % j == 0)
+//			{
+//				break;
+//			}
+//		}
+//		if (i == j)
+//		{
+//			printf("%d ", i);
+//		}
+//	}
+//	return 0;
+//}
+//int main()
+//{
+//	int i = 0;
+//	for (i = 100; i <= 200; i++)
+//	{
+//		int j = 0;
+//		for (j = 2; j < i; j++)
+//		{
+//			if (i % j == 0)
+//			{
+//				break;
+//			}
+//		}
+//		if (i == j)
+//		{
+//			printf("%d ", i);
+//		}
+//	}
+//	return 0;
+//}
+//int main()
+//{
+//	int i = 0;
+//	int count = 0;
+//	for (i = 100; i <= 200; i++)
+//	{
+//		int j = 0;
+//		int flag = 1;
+//		for (j = 2; j < i; j++)
+//		{
+//			if (i % j == 0)
+//			{
+//				flag = 0;
+//				break;
+//			}
+//
+//		}
+//		if (1 == flag)
+//		{
+//			printf("%d ", i);
+//			count++;
+//			
+//		}
+//	}
+//	printf("\n质数数量=%d", count);
+//	return 0;
+//}
+//优化过程
+// m = a * b若m是合数 则比如存在 a或者b有一个数小于<= 根号m
+//#include<math.h>
+//	int main()
+//{
+//	int i = 0;
+//	int count = 0;
+//	for (i = 100; i <= 200; i++)
+//	{
+//		int j = 0;
+//		int flag = 1;
+//		for (j = 2; j <= sqrt(i); j++)//sqrt开平放  明显减少试除数量
+//		{
+//			if (i % j == 0)
+//			{
+//				flag = 0;
+//				break;
+//			}
+//
+//		}
+//		if (1 == flag)
+//		{
+//			printf("%d ", i);
+//			count++;
+//			
+//		}
+//	}
+//	printf("\n质数数量=%d", count);
+//	return 0;
+//}
+//继续优化 直接排除偶数
+
+#include <math.h>
+	int main()
 {
-	int m = 0;
-	int n = 0;
-	int min = 0;
-	scanf("%d%d", &m, &n);
-	if (m > n)
+	int i = 0;
+	int count = 0;
+	for (i = 101; i <= 200; i+=2)//从源头上排除偶数干扰
 	{
-		min = m;
+		int j = 0;
+		int flag = 1;
+		for (j = 2; j <= sqrt(i); j++)//sqrt开平放  明显减少试除数量
+		{
+			if (i % j == 0)
+			{
+				flag = 0;
+				break;
+			}
+
+		}
+		if (1 == flag)
+		{
+			printf("%d ", i);
+			count++;
+		}
 	}
-	else
-	{
-		min = n;
-	}
-	while (min % m /*!= 0*/ || min % n /*!= 0*/)
-	{
-		min++;
-	}
-	printf("%d\n", min);
+	printf("\n质数数量=%d", count);
 	return 0;
 }
