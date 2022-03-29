@@ -2,24 +2,24 @@
 #include <stdio.h>
 
 //¿€≥À
-int main()
-{
-	int n = 0;
-	int i = 1;
-	int s = 1;
-	scanf("%d", &n);
-	while (i <= n)
-	{
-		
-		s = s * i;
-		i++;
-		
-	
-	}
-	printf("%d\n", s);
-
-	return 0;
-}
+//int main()
+//{
+//	int n = 0;
+//	int i = 1;
+//	int s = 1;
+//	scanf("%d", &n);
+//	while (i <= n)
+//	{
+//		
+//		s = s * i;
+//		i++;
+//		
+//	
+//	}
+//	printf("%d\n", s);
+//
+//	return 0;
+//}
 
 //int main()
 //{

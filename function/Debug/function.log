@@ -1,0 +1,4 @@
+﻿  function.c
+function.obj : error LNK2019: unresolved external symbol _Sub referenced in function _main
+sub.lib : warning LNK4272: library machine type 'x64' conflicts with target machine type 'x86'
+D:\hackersun.github.io\function\Debug\function.exe : fatal error LNK1120: 1 unresolved externals
