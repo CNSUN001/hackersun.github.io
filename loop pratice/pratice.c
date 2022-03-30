@@ -254,3 +254,169 @@
 //	}
 //	return 0;
 //}
+
+//int main()
+//{
+//	int a = 0;
+//	int b = 0;
+//	for (a = 1, b = 1; a <= 100; a++)
+//	{
+//		if (b >= 20) break;
+//		if (b % 3 == 1)
+//		{
+//			b = b + 3;
+//			continue;
+//		}
+//		b = b - 5;
+//	}
+//	printf("%d\n", a);
+//		return 0;
+//}
+
+//编写程序计算1-100多少出现多少个9
+//int main()
+//{
+//	int i = 0;
+//	int count = 0;
+//	for (i = 1; i <= 100; i++)
+//	{
+//		if (i % 10 == 9)
+//		{
+//			count++;
+//			printf("%d\n", i);
+//		}
+//		 if (i / 10 == 9)
+//		{
+//			count++;
+//			printf("%d\n", i);
+//		}
+//	}
+//	printf("%d\n", count);
+//	return 0;
+//}
+
+//计算1/1-1/2+1/3-1/4...+1/99-1/100
+//int main()
+//{
+//	int i = 0;
+//	double n = 0;
+//	double s = 0;
+//	for (i = 1; i <= 100; i++)
+//	{
+//		n = 1.0 / i;
+//		if (i % 2 == 0)
+//		{
+//			s = s - n;
+//		}
+//		else
+//		{
+//			s = s + n;
+//		}
+//	
+//	}
+//	printf("%f\n", s);
+//	return 0;
+//}
+//int main()
+//{
+//	int i = 0;
+//	double sum = 0;
+//	for (i = 1; i <= 100; i++)
+//	{
+//		if (i % 2 == 0)
+//		{
+//			sum -= 1.0 / i;
+//		}
+//		else
+//		{
+//			sum += 1.0 / i;
+//		}
+//	}
+//	printf("%f\n", sum);
+//	return 0;
+//}
+//int main()
+//{
+//	int i = 0;
+//	double sum = 0;
+//	int flag = 1;
+//	for (i = 1; i <= 100; i++)
+//	{
+//			sum += flag* 1.0 / i;
+//			flag = -flag;
+//		
+//	}
+//	printf("%f\n", sum);
+//	return 0;
+//}
+
+//求10个整数最大值
+//int main()
+//{
+//	int arr[10] = { -1,-2,-3,-4,-5,-6,-7,-8,-9,-10 };
+//	int i = 0;
+//	int max = arr[0];//注意当整数为负数时，如果max取0无法得到最大值
+//	for (i = 0; i < 10; i++)
+//	{
+//		if (arr[i] > max)
+//		{
+//			max = arr[i];
+//		}
+//	}
+//	printf("%d\n", max);
+//	return 0;
+//}
+
+//乘法口诀表
+//int main()
+//{
+//	int i = 1;
+//	//行数
+//	for (i = 1; i < 9; i++)
+//	{
+//		//打印一行
+//		int j = 0;
+//		//列数
+//		for (j = 1; j <= i; j++)
+//		{
+//			printf("%d*%d=%-2d ", i, j, i * j);
+//		}
+//		printf("\n");
+//	}
+//	return 0;
+//}
+
+
+//二分查找自测
+//int main()
+//{
+//	char arr[] = { 1,2,3,4,5,6,7,8,9,10 };
+//	int k = 0;
+//	int left = 0;
+//	int right = 9;
+//	while (left <= right)
+//	{
+//		int mid = (left + right) / 2;
+//		if (arr[mid] < k)
+//		{
+//			left = mid + 1;
+//			printf("left=%d\n ", left);
+//		}
+//		else if (arr[mid] > k)
+//		{
+//			right = mid - 1;
+//			printf("right=%d \n",right);
+//		}
+//		else 
+//		{
+//			printf("%d\n", mid);
+//			break;
+//		}
+//	
+//	}
+//	if (left > right)
+//	{
+//		printf("输入的值有误" );
+//	}
+//	return 0;
+//}

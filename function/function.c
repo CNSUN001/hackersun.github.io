@@ -344,17 +344,49 @@
 //	return 0;
 //}
 
-#include "sub.h"
-//导入静态库
-#pragma comment(lib,"sub.lib")
-//实现代码隐藏
+//#include "sub.h"
+////导入静态库
+//#pragma comment(lib,"sub.lib")
+////实现代码隐藏
+//
+//int main()
+//{
+//	int a = 10;
+//	int b = 20;
+//	int c = Sub(a, b);
+//	printf("%d\n", c);
+//	return 0;
+//
+//}
+
+
+int prime_judgement(int n)
+{
+	int i = 0;
+	for (i = 2; i < n; i++)
+	{
+		if (n % i == 0)
+		{
+			return 0;
+		}
+	}
+	return 1;
+}
 
 int main()
 {
-	int a = 10;
-	int b = 20;
-	int c = Sub(a, b);
-	printf("%d\n", c);
-	return 0;
+	int i = 0;
+	int count = 0;
+	for (i = 2; i <= 100; i++)
+	{
+		if (prime_judgement(i) == 1)
+		{
+			printf("%d ", i);
+			count++;
+		}
+		 
+	}
+	printf("\n%d ", count);
 
+	return 0;
 }
