@@ -92,8 +92,6 @@ void menu()
 
 
 }
-
-
 void game()
 {
 	int guess = 0;
@@ -124,7 +122,7 @@ void game()
 int main()
 {
 	int input = 0;
-	srand((unsigned int)time(NULL));
+	srand(( int)time(NULL));
 	do
 	{
 		menu();//сно╥д©б╪
@@ -150,3 +148,5 @@ int main()
 	} while (input);
 	return 0;
 }
+
+

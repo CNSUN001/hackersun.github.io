@@ -1,0 +1,4 @@
+﻿  text.c
+D:\hackersun.github.io\array\text.c(43,9): warning C4477: 'printf' : format string '%p' requires an argument of type 'void *', but variadic argument 1 has type 'int'
+D:\hackersun.github.io\array\text.c(43,9): warning C4313: 'printf': '%p' in format string conflicts with argument 1 of type 'int'
+  array.vcxproj -> D:\hackersun.github.io\array\x64\Debug\array.exe

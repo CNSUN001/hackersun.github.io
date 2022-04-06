@@ -91,28 +91,28 @@
 //}
 
 //打印任意行数的乘法口诀表
-//void print_table(int n)
-//{
-//	int i = 0;
-//	for (i = 1; i <= n; i++)
-//	{
-//		int j = 0;
-//		for (j = 1; j <= i; j++)
-//		{
-//			printf("%d*%d=%-2d ", i, j, i * j);
-//		}
-//		printf("\n");
-//	}
-//
-//}
-//int main()
-//{
-//	int n = 0;
-//	scanf("%d", &n);
-//	print_table(n);
-//	//函数的起名也很关键，名字最好体现函数的功能
-//	return 0;
-//}
+void print_table(int n)
+{
+	int i = 0;
+	for (i = 1; i <= n; i++)
+	{
+		int j = 0;
+		for (j = 1; j <= i; j++)
+		{
+			printf("%d*%d=%-2d ", i, j, i * j);
+		}
+		printf("\n");
+	}
+
+}
+int main()
+{
+	int n = 0;
+	scanf("%d", &n);
+	print_table(n);
+	//函数的起名也很关键，名字最好体现函数的功能
+	return 0;
+}
 
 //打印每一位数
 //int print(int n)
