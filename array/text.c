@@ -199,34 +199,98 @@
 
 
 //优化
-void bubble_sort(int arr[], int sz)
-{
-	int i = 0;
-	for (i = 0; i < sz - 1; i++)
-	{
-		int j = 0;
-		int flag = 1;
-		for (j = 0; j < sz - 1 - i; j++)
-		{
-			if (arr[j] > arr[j + 1])
-			{
-				int tmp = arr[j];
-				arr[j] = arr[j + 1];
-				arr[j + 1] = tmp;
-				flag = 0;
-			}
-			if (1 == flag)
-				//flag 作用是为了优化算法，提升效率，，从第一个位置开始没有发生交换，说明后座都已经被对应实力的大数占完，不必再为大数找后座了
-			{
-				break;
-			}
-		}
-	}
-}
-int main()
-{
-	int arr[10] = { 0,1,2,3,4,5,6,7,8,9 };
-	int sz = sizeof(arr) / sizeof(arr[0]);
-	bubble_sort(arr, sz);
-	return 0;
-}
+//void bubble_sort(int arr[], int sz)
+//{
+//	int i = 0;
+//	for (i = 0; i < sz - 1; i++)
+//	{
+//		int j = 0;
+//		int flag = 1;
+//		for (j = 0; j < sz - 1 - i; j++)
+//		{
+//			if (arr[j] > arr[j + 1])
+//			{
+//				int tmp = arr[j];
+//				arr[j] = arr[j + 1];
+//				arr[j + 1] = tmp;
+//				flag = 0;
+//			}
+//			if (1 == flag)
+//				//flag 作用是为了优化算法，提升效率，，从第一个位置开始没有发生交换，说明后座都已经被对应实力的大数占完，不必再为大数找后座了
+//			{
+//				break;
+//			}
+//		}
+//	}
+//}
+//int main()
+//{
+//	int arr[10] = { 0,1,2,3,4,5,6,7,8,9 };
+//	int sz = sizeof(arr) / sizeof(arr[0]);
+//	bubble_sort(arr, sz);
+//	return 0;
+//}
+
+
+//创建一个整型数组，完成对数组的操作
+//1 实现函数init()初始化数组为全0
+//2 实现print()打印每个元素
+//3 实现reverse()函数完成数组元素的逆序
+
+//void init(int arr[],int sz)
+//{
+//	int i = 0;
+//	for (i = 0; i <= sz - 1; i++)
+//	{
+//		arr[i] = 0;
+//	}
+//}
+//void print(int arr[],int sz)
+//{
+//	int i = 0;
+//	for (i = 0; i <= sz - 1; i++)
+//	{
+//		printf("%d ", arr[i]);
+//	}
+//	
+//}
+//void reverse(int* arr, int sz)
+//{
+//	int left = 0;
+//	int right = sz - 1;
+//	while (left < right)
+//	{
+//		int tmp = arr[left];
+//		arr[left] = arr[right];
+//		arr[right] = tmp;
+//		left++;
+//		right--;
+//	}
+//}
+//int main()
+//{
+//	int arr[10] = { 1,2,3,4,5,6,7,8,9,10 };
+//	int sz = sizeof(arr) / sizeof(arr[0]);
+//	reverse(arr, sz);
+//	print(arr, sz);
+//	init(arr,sz);
+//	print(arr,sz);
+//	return 0;
+//}
+
+
+//交换数组
+//int main()
+//{
+//	int arr[] = { 1,3,5,7,9 };
+//	int arr1[] = { 2,4,6,8,10 };
+//	int sz = sizeof(arr) / sizeof(arr[0]);
+//	int i = 0;
+//	for (i = 0; i < sz; i++)
+//	{
+//		int tmp = arr[i];
+//		arr[i] = arr1[i];
+//		arr1[i] = tmp;
+//	}
+//	return 0;
+//}
