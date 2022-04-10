@@ -135,22 +135,26 @@
 //	}
 //	*dest = *src;
 //}
-//#include <assert.h>
-//void my_strcpy(char* dest, const char* src)
+#include <assert.h>
+//把src指向的内容拷贝放进dest指向的空间中
+//本质上讲，希望dest指向的内容被修改，src指向的内容不应该被修改
+//
+//char* my_strcpy(char* dest, const char* src)
 //{
 //	assert(src != NULL);//断言 如果为真什么都不发生，如果为假报错
 //	assert(dest != NULL);//断言 
+//	char* ret = dest;
 //	while ( *dest++  = *src++ )//既拷贝了'\0'又使得循环停止
 //	{
 //		;
 //	}
+//	return ret;
 //}
 //int main()
 //{
 //	char arr[20] = "xxxxxxxxxx";
 //	char arr1[] = "hello";
-//	my_strcpy(arr,arr1);
-//	printf("%s\n", arr);
+//	printf("%s\n", my_strcpy(arr, arr1));//链式访问
 //	return 0;
 //}
 
@@ -180,3 +184,39 @@
 //	return 0;
 //}    
 
+//模拟strlen（指针）
+//健壮性
+//size_t my_strlen( const char* spring)
+//{
+//	size_t ret = 0;
+//	//assert(spring != NULL);
+//	assert(spring);
+//	while (*spring++)
+//	{
+//		ret++;
+//	}
+//	return ret;
+//}
+//递归
+//int my_strlen(const char* spring)
+//{
+//	if(*spring!='\0')
+//	{
+//		return 1 + my_strlen(spring + 1);
+//	}
+//	return 0;
+//}
+//双指针
+size_t my_strlen(const char* spring)
+{
+	char* ret = spring;
+	while (*ret++);
+	return ret - spring - 1;
+}
+
+int main()
+{
+	char arr[] = "hello";
+	printf("%d\n", my_strlen(arr));
+	return 0;
+}

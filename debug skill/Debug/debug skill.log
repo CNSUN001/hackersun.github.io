@@ -1,2 +1,3 @@
 ﻿  text.c
+D:\hackersun.github.io\debug skill\text.c(212,1): warning C4090: 'initializing': different 'const' qualifiers
   debug skill.vcxproj -> D:\hackersun.github.io\debug skill\Debug\debug skill.exe
