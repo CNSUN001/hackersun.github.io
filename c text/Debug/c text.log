@@ -1,0 +1,3 @@
+﻿  text.c
+D:\hackersun.github.io\c text\text.c(190,6): warning C4013: 'gets' undefined; assuming extern returning int
+  c text.vcxproj -> D:\hackersun.github.io\c text\Debug\c text.exe
