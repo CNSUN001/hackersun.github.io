@@ -1,0 +1,4 @@
+﻿  text.c
+D:\hackersun.github.io\pointer text\text.c(119,7): error C2374: 'tmp': redefinition; multiple initialization
+D:\hackersun.github.io\pointer text\text.c(112): message : see declaration of 'tmp'
+D:\hackersun.github.io\pointer text\text.c(123,14): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data

@@ -1,2 +1,3 @@
 ﻿  text.c
+D:\hackersun.github.io\advanced pointer\text.c(174,10): warning C4098: 'print2': 'void' function returning a value
   advanced pointer.vcxproj -> D:\hackersun.github.io\advanced pointer\Debug\advanced pointer.exe
