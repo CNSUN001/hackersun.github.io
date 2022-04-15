@@ -162,3 +162,154 @@
 //	fun(students + 1);
 //	return 0;
 //}
+
+//4
+//struct S
+//{
+//	int a;
+//	int b;
+//};
+//int main()
+//{
+//	struct S a, * p = &a;
+//	a. a = 99;
+//	printf("%d\n", a.a); //(*p).a  p->a 
+//	return;
+//}
+
+//逆序
+//void reverse(int arr[10], int sz)
+//{
+//	int left = 0;
+//	int right = sz - 1;
+//	int tmp = 0;
+//	while( left <= right )
+//	{
+//		tmp = arr[left];
+//		arr[left] = arr[right];
+//		arr[right] = tmp;
+//		left++;
+//		right--;
+//	}
+//}
+//#include <assert.h>
+//void reverse(int* pa, int sz)
+//{
+//	assert(pa);//检验指针
+//	int* left = pa;
+//	int* right = pa + sz - 1;
+//	int tmp = 0;
+//	while (left <= right)
+//	{
+//		tmp = *left;
+//		*left = *right;
+//		*right = tmp;
+//		left++;
+//		right--;
+//	}
+//}
+//void print(int* pa,int sz)
+//{
+//	int i = 0;
+//	for (i = 0; i < sz; i++)
+//	{
+//		printf("%d ", *(pa + i));
+//	}
+//}
+//int main()
+//{
+//	int arr[10] = { 1,2,3,4,5,6,7,8,9,10 };
+//	int sz = sizeof(arr) / sizeof(arr[0]);
+//	reverse(arr, sz);
+//	print(arr,sz);
+//	return 0;
+//}
+
+//打印n行菱形
+//int main()
+//{
+//	int line = 0;
+//	scanf("%d", &line);
+//	//上半部分
+//	int i = 0;
+//	for (i = 0; i < line; i++)
+//	{
+//		//空格
+//		int j = 0;
+//		for (j = 0; j < line - 1 - i; j++)
+//		{
+//			printf(" ");
+//		}
+//		//*
+//		for (j = 0; j < 2 * i + 1; j++)
+//		{
+//			printf("*");
+//		}
+//		printf("\n");
+//
+//	}
+//	//下半部分
+//	for (i = 0; i < line - 1; i++)
+//	{
+//		//空格
+//		int j = 0;
+//		for (j = 0; j < i + 1; j++)
+//		{
+//			printf(" ");
+//		}
+//		//*
+//		for (j = 0; j < (2*line-3)-2*i; j++)
+//		{
+//			printf("*");
+//		}
+//		printf("\n");
+//	}
+//	return 0;
+//}
+
+//喝汽水问题
+//喝汽水,1瓶汽水1元，2个空瓶可以换一瓶汽水，给20元可以买多少汽水、
+//int  main()
+//{
+//	int m = 0;
+//	scanf("%d", &m);
+//	int sum = 0;
+//	while (m>=2)
+//	{
+//		sum += m ;
+//		m = m / 2 ;
+//	}
+//	printf("%d\n", sum);
+//	return 0;
+//}//error error没考虑空瓶错误的
+
+
+//int main()
+//{
+//	int money = 0;
+//	scanf("%d", &money);
+//	int total = money;
+//	int empty = money;
+//	//开始置换
+//	while (empty >= 2)
+//	{
+//		total += empty / 2;
+//		empty = empty / 2+ empty % 2;
+//	}
+//	printf("%d\n", total);
+//	return 0;
+//}
+
+//发现规律 total = 2*money-1
+int main()
+{
+	int money = 0;
+	int total = 0;
+	scanf("%d", &money);
+	if (money == 0)
+		total = 0;
+	else
+		total = 2 * money - 1;
+	printf("%d\n", total);
+	return 0;
+}
