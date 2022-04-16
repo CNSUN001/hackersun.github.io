@@ -130,23 +130,111 @@
 //}
 
 //代码2
+//int main()
+//{
+//
+//	void(*signal(int, void(*)(int)))(int);
+//	//简化代码2
+//	//	void(*)(int) signal(int,void(*)(int)) ;语法不支持
+//	// typedef - 对类型进行重定义
+//
+//	typedef void (*pfun_t)(int);//对void(*)(int)的函数指针类型重命名为pfun_t
+//	pfun_t signal(int, pfun_t);
+//
+//	//1 signal和()结合，说明signal是函数名
+//	//2 signal函数的第一个参数类型是int，第二个参数类型是函数指针
+//	//	该函数指针，指向一个参数为int，返回类型是void的函数
+//	//3 signal函数的返回类型也是一个函数指针
+//	//	该函数指针，指向一个参数为int，返回类型是void的函数
+//	//	signal是一个函数的声明
+//	return 0;
+//}
+
+
+//函数指针数组 - 存放函数指针的数组
+// 
+//整型指针 int*
+//整型指针数组 int* arr[5]
+//int Add(int x, int y)
+//{
+//	return x + y;
+//}
+//int Sub(int x, int y)
+//{
+//	return x - y;
+//}
+//
+//int main()
+//{
+//	int (*pf1)(int, int) = Add;
+//	int (*pf2)(int, int) = Sub;
+//	int (*pfArr[2])(int, int) = {Add, Sub};// pfArr函数指针数组
+//
+//	return 0;
+//}
+
+
+
+//函数指针数组的使用案例
+int Add(int x, int y)
+{
+	return x + y;
+}
+int Sub(int x, int y)
+{
+	return x - y;
+}
+int Mul(int x, int y)
+{
+	return x * y;
+}
+int Dlv(int x, int y)
+{
+	return x / y;
+}
+void menu()
+{
+	printf("*********************\n");
+	printf("****1.add  2.sub ****\n");
+	printf("****3.mul  4.dlv ****\n");
+	printf("****    0.exit   ****\n");
+	printf("*********************\n");
+}
 int main()
 {
-
-	void(*signal(int, void(*)(int)))(int);
-	//简化代码2
-	//	void(*)(int) signal(int,void(*)(int)) ;语法不支持
-	// typedef - 对类型进行重定义
-
-	typedef void (*pfun_t)(int);//对void(*)(int)的函数指针类型重命名为pfun_t
-	pfun_t signal(int, pfun_t);
-
-	//1 signal和()结合，说明signal是函数名
-	//2 signal函数的第一个参数类型是int，第二个参数类型是函数指针
-	//	该函数指针，指向一个参数为int，返回类型是void的函数
-	//3 signal函数的返回类型也是一个函数指针
-	//	该函数指针，指向一个参数为int，返回类型是void的函数
-	//	signal是一个函数的声明
+	int input = 0;
+	//计算器-计算整型变量加、减、乘、除
+	do {
+		menu();
+		printf("请选择>:");
+		scanf("%d", &input);
+		printf("请输入两个操作数>:");
+		int x = 0;
+		int y = 0;
+		scanf("%d %d", &x, &y);
+		int ret = 0;
+		switch (input)
+		{
+		case 1:
+			ret = Add(x, y);
+			break;
+		case 2:
+			ret = Sub(x, y);
+			break;
+		case 3:
+			ret = Mul(x, y);
+			break;
+		case 4:
+			ret = Dlv(x, y);
+			break;
+		case 0:
+			printf("退出程序\n");
+			break;
+		default :
+			printf("输入错误,重新选择\n");
+			break;
+		}
+		printf("ret = %d\n", ret);
+	} while(input);
 	return 0;
 }
-
