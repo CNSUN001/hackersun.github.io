@@ -176,6 +176,173 @@
 
 
 //函数指针数组的使用案例
+//int Add(int x, int y)
+//{
+//	return x + y;
+//}
+//int Sub(int x, int y)
+//{
+//	return x - y;
+//}
+//int Mul(int x, int y)
+//{
+//	return x * y;
+//}
+//int Div(int x, int y)
+//{
+//	return x / y;
+//}
+//void menu()
+//{
+//	printf("*********************\n");
+//	printf("****1.add  2.sub ****\n");
+//	printf("****3.mul  4.dlv ****\n");
+//	printf("****    0.exit   ****\n");
+//	printf("*********************\n");
+//}
+//int main()
+//{
+//	int input = 0;
+//	//计算器-计算整型变量加、减、乘、除
+//	do {
+//		menu();
+//		printf("请选择>:");
+//		scanf("%d", &input);
+//		int x = 0;
+//		int y = 0;
+//		int ret = 0;
+//		switch (input)
+//		{
+//		case 1:
+//			printf("请输入两个操作数>:");//程序赘余  程序升级繁琐冗余
+//			scanf("%d %d", &x, &y);
+//			ret = Add(x, y);
+//			printf("ret = %d\n", ret);
+//			break;
+//		case 2:
+//			printf("请输入两个操作数>:");
+//			scanf("%d %d", &x, &y);
+//			ret = Sub(x, y);
+//			printf("ret = %d\n", ret);
+//			break;
+//		case 3:
+//			printf("请输入两个操作数>:");
+//			scanf("%d %d", &x, &y);
+//			ret = Mul(x, y);
+//			printf("ret = %d\n", ret);
+//			break;
+//		case 4:
+//			printf("请输入两个操作数>:");
+//			scanf("%d %d", &x, &y);
+//			ret = Div(x, y);
+//			printf("ret = %d\n", ret);
+//			break;
+//		case 0:
+//			printf("退出程序\n");
+//			break;
+//		default :
+//			printf("输入错误,重新选择\n");
+//			break;
+//		}
+//	
+//	} while(input);
+//	return 0;
+//}
+
+
+//通过函数指针数组优化
+//int Add(int x, int y)
+//{
+//	return x + y;
+//}
+//int Sub(int x, int y)
+//{
+//	return x - y;
+//}
+//int Mul(int x, int y)
+//{
+//	return x * y;
+//}
+//int Div(int x, int y)
+//{
+//	return x / y;
+//}
+//void menu()
+//{
+//	printf("*********************\n");
+//	printf("****1.add  2.sub ****\n");
+//	printf("****3.mul  4.dlv ****\n");
+//	printf("****    0.exit   ****\n");
+//	printf("*********************\n");
+//}
+//int main()
+//{
+//	int input = 0;
+//	//计算器-计算整型变量加、减、乘、除
+//	do {
+//		menu();
+//		//pfArr就是函数指针数组
+//		//转移表 - 《c和指针》
+//		int (*pfArr[5])(int, int) = { NULL,Add,Sub,Mul,Dlv };
+//		printf("请选择>:");
+//		scanf("%d", &input);
+//		int x = 0;
+//		int y = 0;
+//		int ret = 0;
+//		if (input >= 1 && input <= 4)
+//		{
+//			printf("请输入2个操作数>:");
+//			scanf("%d %d", &x, &y);
+//			ret = (pfArr[input])(x, y);
+//			printf("ret = %d\n", ret);
+//		}
+//		else if(input == 0)
+//		{
+//			printf("退出程序\n");
+//			break;
+//		}
+//		else
+//		{
+//			printf("选择错误\n");
+//		}
+//	} while (input);
+//	return 0;
+//}
+
+
+//函数指针的数组 - 数组
+//取出函数指针数组的地址
+
+//整型数组
+//int arr[5]
+//int (*pl)[5] = &arr  p1【整型数组】的指针
+
+//整型指针的数组
+//int* arr[5];
+//int* (*p2)[5] = &arr; p2【整型指针数组】的指针
+
+//函数指针数组
+//int (*p)(int ,int);//函数指针
+//int (*p2[4])(int, int);//函数指针的数组
+//int （*(*p3)[4]）(int, int) = &p2;//取出函数指针的数组
+//p3就是一个指向【函数指针的数组】的指针
+
+//int main()
+//{
+//	int arr[10];
+//	//数组元素类型 - int;
+//	//数组类型 - int[10]
+//	return 0;
+//}
+
+
+//回调函数
+//回调函数就是一个通过函数指针调用的函数。如果你把函数的指针作为参数传递给
+//另一个函数，当这个指针被用来调用其所指向的函数时，我们就说这是回调函数。
+//回调函数不是由该函数的实现方直接调用，而是在特定的事件或条件发生时由另外的一方调用的
+//用于对该事件或条件进行响应
+
+//通过回调函数优化
 int Add(int x, int y)
 {
 	return x + y;
@@ -188,10 +355,19 @@ int Mul(int x, int y)
 {
 	return x * y;
 }
-int Dlv(int x, int y)
+int Div(int x, int y)
 {
 	return x / y;
 }
+int Calc(int (*pf)(int, int))
+{
+	int x = 0;
+	int y = 0;
+	printf("输入你需要的数据>:");
+	scanf("%d %d", &x, &y);
+	return pf(x, y);
+}
+
 void menu()
 {
 	printf("*********************\n");
@@ -208,24 +384,24 @@ int main()
 		menu();
 		printf("请选择>:");
 		scanf("%d", &input);
-		printf("请输入两个操作数>:");
-		int x = 0;
-		int y = 0;
-		scanf("%d %d", &x, &y);
 		int ret = 0;
 		switch (input)
 		{
 		case 1:
-			ret = Add(x, y);
+			ret = Calc(Add);
+			printf("ret = %d\n", ret);
 			break;
 		case 2:
-			ret = Sub(x, y);
+			ret = Calc(Sub);
+			printf("ret = %d\n", ret);
 			break;
 		case 3:
-			ret = Mul(x, y);
+			ret = Calc(Mul);
+			printf("ret = %d\n", ret);
 			break;
 		case 4:
-			ret = Dlv(x, y);
+			ret = Calc(Div);
+			printf("ret = %d\n", ret);
 			break;
 		case 0:
 			printf("退出程序\n");
@@ -234,7 +410,7 @@ int main()
 			printf("输入错误,重新选择\n");
 			break;
 		}
-		printf("ret = %d\n", ret);
+	
 	} while(input);
 	return 0;
 }

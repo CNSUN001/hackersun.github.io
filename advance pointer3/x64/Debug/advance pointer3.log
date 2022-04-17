@@ -1,0 +1,3 @@
+﻿  text.c
+D:\hackersun.github.io\advance pointer3\text.c(1,1): warning C4828: The file contains a character starting at offset 0x211 that is illegal in the current source character set (codepage 936).
+  advance pointer3.vcxproj -> D:\hackersun.github.io\advance pointer3\x64\Debug\advance pointer3.exe
