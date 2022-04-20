@@ -1,3 +1,2 @@
 ﻿  text.c
-D:\hackersun.github.io\advance pointer text2\text.c(170,18): warning C4013: 'strlen' undefined; assuming extern returning int
   advance pointer text2.vcxproj -> D:\hackersun.github.io\advance pointer text2\Debug\advance pointer text2.exe

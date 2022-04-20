@@ -164,29 +164,150 @@
 //列如：
 //ABCD左旋一个字符得到BCDA
 //ABCD左旋两个字符得到CDAB
-void string_left_rotate(char* str,int k)
+//  方法1
+//void string_left_rotate(char* str,int k)
+//{
+//	int i = 0;
+//	int len = strlen(str);
+//	for (i = 0; i < k; i++)
+//	{
+//		//每次左旋一个字符
+//		char tmp = *str;//1
+//		//2 后面n-1个字符往前挪动
+//		int j = 0;
+//		for (j = 0; j < len - 1; j++)
+//		{
+//			*(str + j) = *(str + j + 1);
+//		}
+//		//3 把tmp放在最后
+//		*(str + len - 1 ) = tmp;
+//		
+//	}
+//}
+//int main()
+//{
+//	char arr[10] = "ABCDEF";
+//	int k = 2;
+//	string_left_rotate(arr,k);
+//	printf("%s\n", arr);
+//	return 0;
+//}
+
+
+// 方法2 
+//字符串左旋可以等价与3次逆序  1 左边逆序 2 右边逆序 3整体逆序
+//#include <assert.h>
+//void reverse(char* left, char* right)
+//{
+//	assert(left);
+//	assert(right);
+//	while (left < right)
+//	{
+//		char tmp = *left;
+//		*left = *right;
+//		*right = tmp;
+//		left++;
+//		right--;
+//	}
+//}
+//void string_left_rotate(char* str, int k)
+//{
+//	assert(str);
+//	int len = strlen(str);
+//	reverse(str, str + k - 1);//左
+//	reverse(str + k, str + len -1);//右
+//	reverse(str,str + len - 1);//全体
+//}
+//
+//int main()
+//{
+//	char arr[10] = "ABCDEF";  //BA FEDC  ->CDEFAB
+//	int k = 2;
+//	string_left_rotate(arr,k);
+//	printf("%s\n", arr);
+//	return 0;
+//}  (程序员编程艺术)
+
+
+//编程题
+//写一个函数，判断一个字符串是否为另一个字符串旋转一行的字符串
+//例如：给定s1 = AABCD 和 s2 = BCDAA 。返回1
+//给定 s1 = abcd 和 s2 =ACBD 返回0
+#include <string.h>
+//暴力穷举法
+//int is_string_left_rotate(char* str, char* str2)
+//{
+//	int i = 0;
+//	int len = strlen(str);
+//	for (i = 0; i < len; i++)
+//	{
+//		//每次左旋一个字符
+//		char tmp = *str;//1
+//		//2 后面n-1个字符往前挪动
+//		int j = 0;
+//		for (j = 0; j < len - 1; j++)
+//		{
+//			*(str + j) = *(str + j + 1);
+//		}
+//		//3 把tmp放在最后
+//		*(str + len - 1) = tmp;
+//
+//		if (strcmp(str, str2) == 0)
+//		{
+//			return 1;
+//		}
+//	}
+//	return 0;
+//}
+
+//优化
+int is_string_left_rotate(char* str1, char* str2)
 {
-	int i = 0;
-	int len = strlen(str);
-	for (i = 0; i < k; i++)
+	//长度不同肯定不是旋转来的
+	if (strlen(str1) != strlen(str2))
 	{
-		//每次左旋一个字符
-		char tmp = *str;//1
-		//2 后面n-1个字符往前挪动
-		int j = 0;
-		for (j = 0; j < len - 1; j++)
-		{
-			*(str + j) = *(str + j + 1);
-		}
-		*(str + len) = tmp;
-		//3 把tmp放在最后
+		return 0;
 	}
+	//1 str1字符串的后边追加一个str1
+	int len = strlen(str1);
+	strncat(str1, str1, len);
+	//AABCDAABCD
+	//2 判断str2 是否为str1的子串
+	char* ret = strstr(str1,str2);//判断一个函数是否是一个函数子串。返回子串地址，找不到返回空指针
+	//AABCDAABCD
+	//BCDAA
+	//if (ret == NULL)
+	//{
+	//	return 0;
+	//}
+	//else
+	//{
+	//	return 1;
+	//}
+	return ret != NULL;
 }
 int main()
 {
-	char arr[10] = "ABCDEF";
-	int k = 2;
-	string_left_rotate(arr,k);
-	printf("%s\n", arr);
+	char arr1[20] = "AABCD";//AABCDAABCD追加一个相同的字符串,里面就包含了左旋的所有可能性
+	
+	char arr2[] = "BCDAA";
+	int ret = is_string_left_rotate(arr1, arr2);
+	if (ret == 1)
+	{
+		printf("yes\n");
+	}
+	else
+	{
+		printf("no\n");
+	}
 	return 0;
 }
+
+//int main()
+//{
+//	char arr[20] = "hello ";
+//	//strcat(arr, "bit"); //strcat追加字符串 但是不可以给追加本身
+//	strncat(arr, arr, 5);
+//	printf("%s\n", arr);
+//	return 0;
+//}
