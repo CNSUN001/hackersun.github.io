@@ -193,12 +193,38 @@
 //}
 
 //6
-int main()
-{
-	int aa[2][5] = { 1,2,3,4,5,6,7,8,9,10 };
-	int* ptr1 = (int*)(&aa + 1);
-	int* ptr2 = (int*)(*(aa + 1));//*(aa + 1)相当于拿到第二行
-	int(*ptr3)[5] = (aa + 1);
-	printf("%d,%d,%d", *(ptr1 - 1), *(ptr2 - 1), *(*(ptr3)+1));//10 5 7
-	return 0;
-}
+//int main()
+//{
+//	int aa[2][5] = { 1,2,3,4,5,6,7,8,9,10 };
+//	int* ptr1 = (int*)(&aa + 1);
+//	int* ptr2 = (int*)(*(aa + 1));//*(aa + 1)相当于拿到第二行
+//	int(*ptr3)[5] = (aa + 1);
+//	printf("%d,%d,%d", *(ptr1 - 1), *(ptr2 - 1), *(*(ptr3)+1));//10 5 7
+//	return 0;
+//}
+
+//7
+//int main()
+//{
+//	//char* p = "abcdef" //p拿的是字符串首地址
+//	char* a[] = { "work","at","alibaba" };//三个字符串首地址
+//	char** pa = a;//a是首元素地址
+//	pa++;
+//	printf("%s\n", *pa);//at
+//	return 0;
+//}
+
+//8  p126 14:07
+//int main()
+//{
+//	char* c[] = { "ENTER","NEW","POINT","FIRST" };
+//	char** cp[] = { c + 3,c + 2,c + 1,c };
+//	char*** cpp = cp;
+//
+//	printf("%s\n", **++cpp);//POINT cpp -> c+2
+//	printf("%s\n", *-- * ++cpp + 3);//ER  cpp-> c+1  在通过--之后 cpp->c 再对其解应用 指向ENTER的地址 +3  得到 ER
+//	printf("%s\n", *cpp[-2] + 3);//ST  **(cpp-2)+3
+//	printf("%s\n", cpp[-1][-1] + 1);//EW  *(*(cpp-1)-1)+1
+//
+//	return 0;
+//}
