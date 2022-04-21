@@ -311,3 +311,29 @@ int main()
 //	printf("%s\n", arr);
 //	return 0;
 //}
+
+//下列test函数设计正确的是：()
+//char* arr[5] = {"hello" ,"bit" };
+//test(arr);
+// 1  void test(char** arr);
+// 2  void test(char* arr[5]);
+
+//int main()
+//{
+//	int aa[2][5] = { 10,9,8,7,6,5,4,3,2,1 };
+//	int* ptr1 = (int*)(&aa + 1);
+//	int* ptr2 = (int*)(*(aa + 1));
+//	int a = *( * (aa + 1));
+//	printf("%d,%d\n", *(ptr1 - 1), *(ptr2 - 1));
+//	printf("%d", a);
+//
+//	return 0;
+//}
+
+//int main()
+//{
+//	int a[5] = { 5,4,3,2,1 };
+//	int* ptr = (int*)(&a + 1);
+//	printf("%d,%d", *(a + 1), *(ptr - 1));//4,1
+//	return 0;
+//}
