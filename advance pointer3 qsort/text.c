@@ -91,14 +91,14 @@ int sort_age(const void* e1, const void* e2)
 }
 int sort_name(const void* e1, const void* e2)
 {
-	return strcmp(((struct Stu*)e1)->name,((struct Stu*)e2)->name);
+	return strcmp(((struct Stu*)e1)->name, ((struct Stu*)e2)->name);
 	//strcmp对应比较ASCII码
 }
 
 void test2()
 {
 	//使用qsort函数排序结构体数据
-	struct Stu s[3] = { {"zhangsan",30},{"lisi",34},{"wangwu",20}};
+	struct Stu s[3] = { {"zhangsan",30},{"lisi",34},{"wangwu",20} };
 	//假设按照年龄排序
 	int sz = sizeof(s) / sizeof(s[0]);
 	bubble_sort(s, sz, sizeof(s[0]), sort_age);
@@ -113,7 +113,7 @@ void test2()
 //}
 
 //模仿qsort实现一个冒泡排序的通用算法
-Swap(char* buf1, char* buf2, int size)
+void Swap(char* buf1, char* buf2, int size)
 {
 	int i = 0;
 	for (i = 0; i < size; i++)
@@ -125,10 +125,10 @@ Swap(char* buf1, char* buf2, int size)
 		buf2++;
 	}
 }
-void bubble_sort(void* base, 
-				int sz, 
-				int size, 
-				int (*cmp)(const void* e1, const void* e2))
+void bubble_sort(void* base,
+	int sz,
+	int size,
+	int (*cmp)(const void* e1, const void* e2))
 {
 	int i = 0;
 	for (i = 0; i < sz - 1; i++)
@@ -138,7 +138,7 @@ void bubble_sort(void* base,
 		//两个元素比较
 		for (j = 0; j < sz - 1 - i; j++)
 		{
-			if (cmp((char*)base+j*size, (char*)base+(j+1)*size )> 0)
+			if (cmp((char*)base + j * size, (char*)base + (j + 1) * size) > 0)
 			{
 				//交换
 				Swap((char*)base + j * size, (char*)base + (j + 1) * size, size);

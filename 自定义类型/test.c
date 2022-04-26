@@ -282,19 +282,223 @@
 //10 保密
 //11
 
-struct A
-{
-    //4个字节 - 32bit
-    int _a : 2;// _a占2个bit位
-    int _b : 5;// _b占5个bit位
-    int _c : 10;// _c占10个bit位
-    //15
-    //4个字节 - 32bit
-    int _d : 30;// _d占30给bit位
-};
+//struct A
+//{
+//    //4个字节 - 32bit
+//    int _a : 2;// _a占2个bit位
+//    int _b : 5;// _b占5个bit位
+//    int _c : 10;// _c占10个bit位
+//    //15
+//    //4个字节 - 32bit
+//    int _d : 30;// _d占30给bit位
+//};
+//
+//int main()
+//{
+//    printf("%d\n", sizeof(struct A));//8
+//    return 0;
+//}
 
+//struct S
+//{
+//    char a : 3;
+//    char b : 4;
+//    char c : 5;
+//    char d : 4;
+//};
+//
+//int main()
+//{
+//    struct S s = { 0 };
+//    s.a = 10;   //1010   00000010
+//    s.b = 12;   //1100   01100010
+//    s.c = 3;    //0011   01100010 00000011 
+//    s.d = 4;    //0100   01100010 00000011 00000100
+//    // 内存620304  从右向左使用，新成员内存不够会开辟新空间
+//    return 0;
+//}
+
+
+//位段的跨平台问题
+//1 int位段被当成有符号数还是无符号数不确定
+//2 位段中最大位的数目不能确定（16位机器最大16，32位机器最大32，如果写27在16位机器会出问题）
+//3 位置在内存从左到右分配，还是从右向左分配标准尚未定义
+//4 当一个结构包含两个位段，第二个位段比较大，是弃用还是利用不确定。
+
+
+//枚举
+//应用场景
+//1 一周的星期一到星期日是有限的7天，可以一一列举。
+//2 性别有：男、女、保密，也可以一一列举。
+//3 月份有12个月，也可以一一列举。
+
+
+//声明枚举类型  枚举是常量
+//#define RED 5
+//#define GREEN 5
+//#define BLUE 5
+
+//enum Color//相比define增加代码可读性，有类型检查，防止命名污染，方便调试，使用方便
+//{
+//    RED = 5,//0 默认递增
+//    GREEN ,//1
+//    BLUE//2
+//};
+//
+//int main()
+//{
+//    enum Color c = BLUE;
+//    printf("%d\n", RED);
+//    printf("%d\n", GREEN);
+//    printf("%d\n", BLUE);
+//
+//    return 0;
+//}
+
+//void menu()
+//{
+//    printf("***********************\n");
+//    printf("*****1.add  2.sub******\n");
+//    printf("*****3.mul  4.div******\n");
+//    printf("********0.exit*********\n");
+//
+//}
+//enum Option
+//{
+//    EXIT,
+//    ADD,
+//    SUB,
+//    MUL,
+//    DIV
+//};
+//int Add(int x, int y)
+//{
+//    return x + y;
+//}
+//int Sub(int x, int y)
+//{
+//    return x - y;
+//}
+//int Mul(int x, int y)
+//{
+//    return x * y;
+//}
+//int Div(int x, int y)
+//{
+//    return x / y;
+//}
+//int Calc(int (*pf)(int, int))
+//{
+//    int x = 0;
+//    int y = 0;
+//    printf("输入你需要的数据>:");
+//    scanf("%d %d", &x, &y);
+//    return pf(x, y);
+//}
+//int main()
+//{
+//    int input = 0;
+//    do
+//    {
+//        menu();
+//        printf("请选择:>");
+//        scanf("%d", &input);
+//        int ret = 0;
+//        switch (input)
+//        {
+//        case ADD:
+//            ret = Calc(Add);
+//            printf("ret = %d\n", ret);
+//            break;
+//        case SUB:
+//            ret = Calc(Sub);
+//            printf("ret = %d\n", ret);
+//            break;       
+//        case MUL:
+//            ret = Calc(Mul);
+//            printf("ret = %d\n", ret);
+//             break;
+//        case DIV:
+//            ret = Calc(Div);
+//            printf("ret = %d\n", ret);
+//            break;
+//        case EXIT:
+//            printf("退出程序\n");
+//            break;
+//        default:
+//            printf("输入错误,重新选择\n");
+//            break;
+//        }
+//    } while (input);
+//    return 0;
+//}
+
+
+//联合体（共用体） 公用同一块空间，联合体的大小至少是最大成员的大小
+//union Un
+//{
+//    char c;//1
+//    int i;//4
+//};
+//int main()
+//{
+//    union Un u = { 10 };//改一个元素会影响其他，同一时间只能用一个元素
+//    u.i = 1000;
+//    u.c = 100;
+//    //printf("%d\n", sizeof(u));//4
+//    printf("%p\n", &u);
+//    printf("%p\n", &(u.c));
+//    printf("%p\n", &(u.i));//三个地址一模一样
+//
+//    return 0;
+//}
+
+
+//判断当前计算机的大小端
+//union Un
+//{
+//    char c;//1
+//    int i;//4
+//}u;
+//int main()
+//{
+//    //int a = 1;
+//    //char* p = (char*)&a;
+//    //if (*p == 1)
+//    //{
+//    //    printf("小端模式\n");
+//
+//    //}
+//    //else
+//    //{
+//    //    printf("大端模式\n");
+//    //}
+//    u.i = 1;
+//    if (u.c == 1)
+//    {
+//        printf("小端模式\n");
+//    }
+//    else
+//    {
+//        printf("大端模式\n");
+//    }
+//    return 0;
+//}
+
+
+//联合体大小计算
+//联合体的大小至少是最大成员的大小
+//当最大成员大小不是最大对齐数的整数倍时，要对齐到最大对齐数的整数倍
+union Un
+{
+    //char a[5];//对齐数1     5
+    //int i;//对齐数4
+    short s[5];
+    int a;
+};
 int main()
 {
-    printf("%d\n", sizeof(struct A));//8
+    union Un u;
+    printf("%d\n",sizeof(u));//8 12
     return 0;
 }
