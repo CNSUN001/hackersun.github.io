@@ -1,6 +1,5 @@
 ﻿  contact.c
+D:\hackersun.github.io\通讯录\contact.c(108,25): warning C4090: 'function': different 'const' qualifiers
   test.c
   Generating Code...
-  contact.h
-Debug\contact.obj : warning LNK4042: object specified more than once; extras ignored
   通讯录.vcxproj -> D:\hackersun.github.io\通讯录\Debug\通讯录.exe

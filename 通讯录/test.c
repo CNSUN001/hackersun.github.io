@@ -1,5 +1,5 @@
 #define _CRT_SECURE_NO_WARNINGS 1
-#include <stdio.h>
+
 
 #include "contact.h"
 //通讯录
@@ -12,7 +12,7 @@
 //5. 查找指定人的信息
 //6. 排序通讯录的信息
 
-#define MAX 1000
+
 void menu()
 {
 	printf("**************************\n");
@@ -40,7 +40,10 @@ int main()
 {
 	int input = 0;
 	//创建通讯录
-	struct PeiInfo data[MAX];
+	Contact con; 
+	//初始化通讯录的函数
+	InitContact(&con);
+
 	do
 	{
 		menu();
@@ -49,18 +52,25 @@ int main()
 		switch (input)
 		{
 		case ADD:
+			AddContact(&con);
 			break;
 		case DEL:
+			DelContact(&con);
 			break;
 		case SEARCH:
+			SearchContact(&con);
 			break;
 		case MODIFY:
+			ModifyContact(&con);
 			break;
 		case SORT:
+			SortContact(&con);
 			break;
 		case PRINT:
+			PrintContact(&con);
 			break;
 		case EXIT:
+			printf("选择错误\n");
 			break;
 		default:
 			printf("输入错误\n");
