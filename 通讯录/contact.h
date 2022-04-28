@@ -1,12 +1,17 @@
 #define _CRT_SECURE_NO_WARNINGS 1
+
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+
 
 #define MAX_NAME 20
 #define MAX_SEX 20
 #define MAX_TELE 12
 #define MAX_ADDR 30
+
+#define DEFAULT_SZ 3
+#define INC_SZ 2
 
 #define MAX 1000
 //类型定义
@@ -19,11 +24,19 @@ typedef struct PeoInfo
 	char addr[MAX_ADDR];
 }PeoInfo;
 
-//通讯录
+//通讯录 - 静态
+//typedef struct Contact
+//{
+//	 PeoInfo data[MAX];//存放添加进来人的信息
+//	 int sz;//记录当前通讯录中有效信息个数
+//}Contact;
+
+//通讯录 - 动态
 typedef struct Contact
 {
-	 PeoInfo data[MAX];//存放添加进来人的信息
-	 int sz;//记录当前通讯录中有效信息个数
+	PeoInfo* data;
+	int sz;//记录当前通讯录中有效信息个数
+	int capacity;//表示当前通讯录的最大容量 capacity
 }Contact;
 
 //初始化通讯录
@@ -48,6 +61,8 @@ void SearchContact(const Contact* pc);
 //修改指定联系人的参数
 void ModifyContact(Contact* pc);
 
+//销毁通讯录
+void DestoryContact(Contact* pc);
 
 //局部变量 函数形参 在栈区开辟
 //动态内存 在堆区开辟

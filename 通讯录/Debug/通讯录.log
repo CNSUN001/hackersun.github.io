@@ -1,5 +1,4 @@
 ﻿  contact.c
-D:\hackersun.github.io\通讯录\contact.c(108,25): warning C4090: 'function': different 'const' qualifiers
   test.c
   Generating Code...
   通讯录.vcxproj -> D:\hackersun.github.io\通讯录\Debug\通讯录.exe
