@@ -1,7 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <string.h>
 
 //动态内存开辟  在堆区
 //malloc calloc
@@ -205,16 +205,179 @@
 //}
 
 //6. 动态内存忘记释放
-void test() //内存泄露
+//void test() //内存泄露
+//{
+//	int* p = (int*)malloc(100);//动态开辟的空间 2种回收方式 1 主动free，2 程序结束
+//	if (p == NULL)
+//	{
+//		return;
+//	}
+//}
+//int main()     
+//{
+//	test();
+//	return 0;
+//}
+
+
+//1 运行结果
+//str传给GetMemory函数的时候是值传递，所以函数内部的形参p是str的一份临时拷贝
+//在GetMemory函数内部动态申请空间的地址，存放在p中，不会影响外边的str，所以当函数返回之后
+//str依然是空指针，所以strcpy会失败
+
+//当GetMemory函数返回之后，形参p销毁，使得动态开辟的100个字节内存泄露，无法释放
+
+//void GetMemory(char* p)  //出自高质量c++编程
+//{
+//	p = (char*)malloc(100);
+//}
+//void Test(void)
+//{
+//	char* str = NULL;
+//	GetMemory(str);//
+//	strcpy(str, "hello world");
+//	printf(str);
+//}
+//int main()
+//{
+//	Test();
+//	return 0;
+//}
+
+//修改1
+//char* GetMemory(char* p)
+//{
+//	p = (char*)malloc(100);
+//	return p;
+//}
+//void Test(void)
+//{
+//	char* str = NULL;
+//	str = GetMemory(str);
+//	strcpy(str, "hello world");
+//	printf(str);
+//	free(str);
+//	str = NULL;
+//}
+//int main()
+//{
+//	Test();
+//	return 0;
+//}
+
+//修改2
+//void GetMemory(char** p)
+//{
+//	*p = (char*)malloc(100);
+//}
+//void Test(void)
+//{
+//	char* str = NULL;
+//	GetMemory(&str);//
+//	strcpy(str, "hello world");
+//	printf(str);
+//	free(str);
+//	str = NULL;
+//}
+//int main()
+//{
+//	Test();
+//	return 0;
+//}
+
+
+//2
+//GetMemory 函数内部创建的数组在栈区创建
+//出了函数，p数组的空间就还给了操作系统
+//返回的地址是没有实际意义的，如果通过返回的地址，取访问内存就是非法访问内存
+
+//char* GetMemory(void)
+//{
+//	 char p[] = "hello world";
+//	return p;//离开函数p的栈区内容已经被销毁了
+//}
+//void Test(void)
+//{
+//	char* str = NULL;
+//	str = GetMemory();
+//	printf(str);
+//}
+//int main()
+//{
+//	Test();
+//	return 0;
+//}
+
+//修改
+//char* GetMemory(void)
+//{
+//	static char p[] = "hello world"; 
+//	return p;
+//}
+//void Test(void)
+//{
+//	char* str = NULL;
+//	str = GetMemory();
+//	printf(str);
+//}
+//int main()
+//{
+//	Test();
+//	return 0;
+//}
+
+//3
+//void GetMemory(char** p, int num)
+//{
+//	*p = (char*)malloc(num);
+//}
+//void Test(void)
+//{
+//	char* str = NULL;
+//	GetMemory(&str, 100);
+//	strcpy(str, "hello");
+//	printf(str);
+//	free(str);
+//	str = NULL;
+//}
+//int main()
+//{
+//	Test();
+//	return 0;
+//}
+
+//4
+void Test(void)
 {
-	int* p = (int*)malloc(100);//动态开辟的空间 2种回收方式 1 主动free，2 程序结束
-	if (p == NULL)
+	char* str = (char*)malloc(100);
+	strcpy(str, "hello");
+	free(str);//已经释放了再访问，非法访问 free后要接NULL
+	if (str != NULL)
 	{
-		return;
+		strcpy(str, "world");
+		printf(str);
 	}
 }
-int main()     
+
+int main()
 {
-	test();
+	Test();
 	return 0;
 }
+
+
+//5
+//int* f1(void)
+//{
+//	int x =10;
+//	return (&x);//离开函数x已经局部变量被销毁
+//}
+
+//6
+//int* f2(void)
+//int* f2(void)
+//{
+//	int* ptr;//野指针 指针没有初始化
+//	*ptr = 10;
+//	return ptr;
+//}
