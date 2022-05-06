@@ -296,63 +296,149 @@ int main()
 //编写一个函数找出这两个只出现一次的函数
 // 1 2 3 4 5 6 1 2 3 4
 
-void Find(int arr[], int sz,int* px,int* py)
+//void Find(int arr[], int sz,int* px,int* py)
+//{
+//	//1 要把所有数字异或
+//	int i = 0;
+//	int ret = 0;
+//	for (i = 0; i < sz; i++)
+//	{
+//		ret ^= arr[i];
+//	}
+//	//2 计算ret的哪一位为1
+//	int pos = 0;
+//	for (i = 0; i < 32; i++)
+//	{
+//		if (((ret >> i) & 1) == 1)
+//		{
+//			pos = i;
+//			break;
+//		}
+//	}
+//	//把从低位向高的第pos位为1的放在一组，为0的放在另外一个组
+//	int num1 = 0;
+//	int num2 = 0;
+//	for (i = 0; i < sz; i++)
+//	{
+//		if (((arr[i] >> pos) & 1) == 1)
+//		{
+//			num1^= arr[i];
+//		}
+//		else
+//		{
+//			num2 ^= arr[i];
+//		}
+//	}
+//	*px = num1;
+//	*py = num2;
+//}
+//
+//
+//int main()
+//{
+//	//按最低bit位分成两组
+//	// 1 3 1 3 5
+//	// 2 4 2 4 6
+//	
+//	//按倒数第2bit位分成两组
+//	//1 4 1 4  5
+//	//2 3 2 3  6
+//	int arr[] = { 1,2,3,4,5,6,1,2,3,4 };
+//	//1^2^3^4^5^6^1^2^3^4 = 5^6
+//	// 1 3 1 3 5
+//	// 2 4 2 4 6
+//	//找出这两个只出现一次的数字
+//	//分出两组按照方案1进行
+//	int sz = sizeof(arr) / sizeof(arr[0]);
+//	int x = 0;
+//	int y = 0;
+//	Find(arr,sz,&x,&y);
+//	printf("%d %d\n", x, y);
+//	return 0;
+//}
+
+
+//编译和链接
+
+//#define N 4
+//#define Y(n) ((N+2)*n)
+//
+//int main()
+//{
+//	int  z = 2 * (N + Y(5 + 1));//2 * (4 + (4+2)*5+1)
+//	fprintf(stdout, "%d\n", z);
+//	return 0;
+//}
+
+
+
+//#define A 2+2
+//#define B 3+3
+//#define C A*B  //(2+2*3+3)
+//int main()
+//{
+//	printf("%d\n", C);//11
+//	return 0;
+//}
+
+//5 0101 A 1010
+//定义宏二进制位置交换
+
+
+//#define CHANGE(n) (((n&0x55555555)<<1)|((n&0xaaaaaaaa)>>1))
+//
+//void print_bin_8(int num)
+//{
+//	int i = 0;
+//	int j = 0;
+//	int k = 0;
+//	unsigned char* p = (unsigned char*)&num + 3;
+//	for (i = 0; i < 4; i++)
+//	{
+//		j = *(p - i);
+//
+//		for ( k = 7; k >= 0; k--)
+//		{
+//			if (((j >> k) & 1) == 1)
+//			{
+//				printf("1");
+//			}
+//			else
+//				printf("0");
+//
+//		}
+//		printf(" ");
+//	}
+//	printf("\n");
+//}
+//int main()
+//{
+//	int a = 2;
+//	print_bin_8(a);
+//	int ret = CHANGE(a);
+//	print_bin_8(ret);
+//
+//	return 0;
+//}
+
+
+//写一个宏计算结构体变量相对于首地址的偏移量
+#define OFFSETOF(struct_name,member_name) (((char*)member_name )- ((char*)struct_name))
+#define OFFSETOF2(struct_name,member_name)  (int)&(((struct_name*)0)->member_name)
+struct A
 {
-	//1 要把所有数字异或
-	int i = 0;
-	int ret = 0;
-	for (i = 0; i < sz; i++)
-	{
-		ret ^= arr[i];
-	}
-	//2 计算ret的哪一位为1
-	int pos = 0;
-	for (i = 0; i < 32; i++)
-	{
-		if (((ret >> i) & 1) == 1)
-		{
-			pos = i;
-			break;
-		}
-	}
-	//把从低位向高的第pos位为1的放在一组，为0的放在另外一个组
-	int num1 = 0;
-	int num2 = 0;
-	for (i = 0; i < sz; i++)
-	{
-		if (((arr[i] >> pos) & 1) == 1)
-		{
-			num1^= arr[i];
-		}
-		else
-		{
-			num2 ^= arr[i];
-		}
-	}
-	*px = num1;
-	*py = num2;
-}
-
-
+	int a;
+	short b;
+	char c;
+};
 int main()
 {
-	//按最低bit位分成两组
-	// 1 3 1 3 5
-	// 2 4 2 4 6
-	
-	//按倒数第2bit位分成两组
-	//1 4 1 4  5
-	//2 3 2 3  6
-	int arr[] = { 1,2,3,4,5,6,1,2,3,4 };
-	//1^2^3^4^5^6^1^2^3^4 = 5^6
-	// 1 3 1 3 5
-	// 2 4 2 4 6
-	//找出这两个只出现一次的数字
-	//分出两组按照方案1进行
-	int sz = sizeof(arr) / sizeof(arr[0]);
-	int x = 0;
-	int y = 0;
-	Find(arr,sz,&x,&y);
-	printf("%d %d\n", x, y);
+	struct A a = { 0 };
+	printf("%d\n", OFFSETOF(&a, &a.c));
+	printf("%d\n", OFFSETOF2(struct A, a));
+	printf("%d\n", OFFSETOF2(struct A, b));
+	printf("%d\n", OFFSETOF2(struct A, c));
+
+
 	return 0;
 }
