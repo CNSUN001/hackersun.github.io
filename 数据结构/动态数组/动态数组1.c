@@ -68,6 +68,7 @@ void insert_array(DynamicArray* array, int pos, void* data)
 		else
 		{
 			perror("insert_array");
+			return;
 		}
 		//插入新的元素
 
