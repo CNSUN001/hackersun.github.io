@@ -15,16 +15,8 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="动态数组1.c">
+    <ClCompile Include="test.c">
       <Filter>Resource Files</Filter>
     </ClCompile>
-    <ClCompile Include="dynamicArray.c">
-      <Filter>Resource Files</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="dynamicArray.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>

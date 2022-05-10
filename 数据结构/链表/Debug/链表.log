@@ -1,0 +1,3 @@
+﻿  test.c
+D:\hackersun.github.io\数据结构\链表\test.c(39): warning C4715: 'init_LinkList': not all control paths return a value
+  链表.vcxproj -> D:\hackersun.github.io\数据结构\链表\Debug\链表.exe
