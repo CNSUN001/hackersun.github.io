@@ -36,6 +36,7 @@ LinkList init_LinkList()
 	myList->pHeader.data = NULL;
 	myList->pHeader.next = NULL;
 	myList->m_size = 0;
+	return myList;
 }
 
 //插入链表
@@ -99,8 +100,116 @@ void foreach_LinkList(LinkList list,void(*myForeach)(void*))
 }
 
 
+//删除链表按位置
+void removeByPos_LinkList(LinkList list, int pos)
+{
+	if (list == NULL)
+	{
+		return;
+	}
+	struct LList* mylist = list;
+	if (pos<0 || pos>mylist->m_size - 1)
+	{
+		return;
+	}
+	//找到删除节点的前驱
+	struct LinkNode* pCurrent = &mylist->pHeader;
+	for (int i = 0; i < pos; i++)
+	{
+		pCurrent = pCurrent->next;
+	}
 
+	//记录待删除的节点
+	struct LinkNode* pDel = pCurrent->next;
+	//重新建立关系
+	pCurrent->next = pDel->next;
+	
+	free(pDel);
+	pDel = NULL;
+	mylist->m_size--;
 
+}
+
+//按值来删除链表
+void removeByValue_LinkList(LinkList list, void* data,int(*myCompare)(void*,void*))
+{
+	if (list == NULL)
+	{
+		return;
+	}
+	if (data == NULL)
+	{
+		return;
+	}
+	//创建两个辅助指针
+	struct LList* mylist = list;
+	struct LinkNode* pPrev = &mylist->pHeader;
+	struct LinkNode* pCurrent = pPrev->next;
+	for (int i = 0; i < mylist->m_size; i++)
+	{
+		//两个指针的比较，利用回调，交换给用户
+		if (myCompare(pCurrent->data, data))
+		{
+			pPrev->next = pCurrent->next;
+			free(pCurrent);
+			pCurrent = NULL;
+
+			mylist->m_size--;
+			break;
+		}
+		pPrev = pCurrent;
+		pCurrent = pCurrent->next;
+	}
+	
+}
+
+//清空链表
+void clear_LinkList(LinkList list)
+{
+	if (list == NULL)
+	{
+		return;
+	}
+
+	struct LList* mylist = list;
+	
+	struct LinkNode* pCurrent = mylist->pHeader.next;
+	for (int i = 0; i < mylist->m_size; i++)
+	{
+		struct LinkNode* pNext = pCurrent->next;
+
+		free(pCurrent);
+		pCurrent = pNext;
+	}
+	mylist->pHeader.next = NULL;
+	mylist->m_size = 0;
+}
+
+//返回链表长度
+int size_LinkList(LinkList list)
+{
+	if (list == NULL)
+	{
+		return -1;
+	}
+	struct LList* mylist = list;
+	return mylist->m_size;
+}
+
+//销毁链表
+void destory_Linklist(LinkList list)
+{
+	if (list == NULL)
+	{
+		return ;
+	}
+	clear_LinkList(list);
+
+	free(list);
+
+	list = NULL;
+
+}
 
 //测试
 
@@ -117,6 +226,14 @@ void myPrintPerson(void* data)
 	printf("姓名：%s  年龄 ：%d\n", p->name, p->age);
 }
 
+int myComparePerson(void* data1, void* data2)
+{
+	struct Person* p1 = data1;
+	struct Person* p2 = data2;
+
+	return strcmp(p1->name, p2->name) == 0 && p1->age == p2->age;
+}
+
 void test01()
 {
 	//准备数据
@@ -129,6 +246,7 @@ void test01()
 
 	//初始化
 	LinkList mylist = init_LinkList();
+	printf("链表长度:%d\n", size_LinkList(mylist));
 
 	//插入数据
 	//小六 小四 小五 小二 小一 小三
@@ -139,15 +257,40 @@ void test01()
 	insert_LinkList(mylist, 1, &p5);
 	insert_LinkList(mylist, 0, &p6);
 
+	printf("链表长度:%d\n", size_LinkList(mylist));
+
+
+
 	//遍历
 	foreach_LinkList(mylist, myPrintPerson);
+
+	//测试删除
+	removeByPos_LinkList(mylist, 4);
+	printf("-----------------------\n");
+	foreach_LinkList(mylist, myPrintPerson);
+
+	//按值删除
+	struct Person p = { "小五",18 };
+	removeByValue_LinkList(mylist, &p, myComparePerson);
+	printf("-----------------------\n");
+	foreach_LinkList(mylist, myPrintPerson);
+
+	//测试清空
+	clear_LinkList(mylist);
+
+	//返回链表长度
+	printf("链表长度:%d", size_LinkList(mylist));
+
+	//销毁掉链表
+	destory_Linklist(mylist);
+	mylist = NULL;
 
 }
 
 int main()
 {
 	test01();
-	system("pauss");
+	
 	return EXIT_SUCCESS;
 }
 
