@@ -1,0 +1,5 @@
+﻿  test.c
+D:\hackersun.github.io\数据结构\栈的应用案例 就近匹配\seqStack.h(2,1): warning C4005: '_CRT_SECURE_NO_WARNINGS': macro redefinition
+D:\hackersun.github.io\数据结构\栈的应用案例 就近匹配\test.c(1): message : see previous definition of '_CRT_SECURE_NO_WARNINGS'
+C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Microsoft\VC\v170\Microsoft.CppCommon.targets(1092,5): error MSB6006: "link.exe" exited with code 1168.
+LINK : fatal error LNK1168: cannot open D:\hackersun.github.io\数据结构\栈的应用案例 就近匹配\x64\Debug\栈的应用案例 就近匹配.exe for writing
