@@ -15,22 +15,8 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="seqQueue.c">
-      <Filter>Resource Files</Filter>
-    </ClCompile>
-    <ClCompile Include="dynamicArray.c">
-      <Filter>Resource Files</Filter>
-    </ClCompile>
     <ClCompile Include="test.c">
       <Filter>Resource Files</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="dynamicArray.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="seqQueue.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>

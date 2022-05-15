@@ -1,4 +1,8 @@
-﻿  test.c
-D:\hackersun.github.io\数据结构\队列\test.c(61,20): warning C4244: 'return': conversion from '__int64' to 'int', possible loss of data
-D:\hackersun.github.io\数据结构\队列\test.c(77,12): warning C4244: 'return': conversion from '__int64' to 'int', possible loss of data
+﻿  seqQueue.c
+D:\hackersun.github.io\数据结构\队列\dynamicArray.h(2,1): warning C4005: '_CRT_SECURE_NO_WARNINGS': macro redefinition
+D:\hackersun.github.io\数据结构\队列\seqQueue.h(2): message : see previous definition of '_CRT_SECURE_NO_WARNINGS'
+  test.c
+D:\hackersun.github.io\数据结构\队列\dynamicArray.h(2,1): warning C4005: '_CRT_SECURE_NO_WARNINGS': macro redefinition
+D:\hackersun.github.io\数据结构\队列\seqQueue.h(2): message : see previous definition of '_CRT_SECURE_NO_WARNINGS'
+  Generating Code...
   队列.vcxproj -> D:\hackersun.github.io\数据结构\队列\Debug\队列.exe
