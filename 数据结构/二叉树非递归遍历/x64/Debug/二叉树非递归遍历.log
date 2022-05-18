@@ -1,0 +1,6 @@
+﻿  seqStack.c
+  test.c
+D:\hackersun.github.io\数据结构\二叉树非递归遍历\seqStack.h(2,1): warning C4005: '_CRT_SECURE_NO_WARNINGS': macro redefinition
+D:\hackersun.github.io\数据结构\二叉树非递归遍历\test.c(1): message : see previous definition of '_CRT_SECURE_NO_WARNINGS'
+  Generating Code...
+  二叉树非递归遍历.vcxproj -> D:\hackersun.github.io\数据结构\二叉树非递归遍历\x64\Debug\二叉树非递归遍历.exe

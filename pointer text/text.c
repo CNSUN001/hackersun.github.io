@@ -28,7 +28,7 @@
 //}
 
 //	int i;//i是全局变量,如果不初始化，默认是0
-//int main()
+//int main()   
 //{
 //	i -- ;// -1
 //	//sizeof这个操作符，算出的结果的类型是unsigned int
