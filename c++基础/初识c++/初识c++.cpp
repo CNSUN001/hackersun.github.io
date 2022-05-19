@@ -2,6 +2,7 @@
 #include <iostream>//标准输入输出流 i - input o - output相当于stdio.h
 using namespace std;//使用  标准 命名空间 
 
+
 //#include <math.h>
 //#include <cmath>
 //
@@ -115,7 +116,7 @@ using namespace std;//使用  标准 命名空间
 //C
 #define _CRT_SECURE_NO_WARNINGS 1
 #include <stdio.h>
-#include <string.h>
+#include <string>
 #include <stdlib.h>
 
 //1 全局变量检测增强
@@ -141,22 +142,22 @@ void test02()
 
 //4 struct增强
 
-struct Person
-{
-	int age;
-	void func()//C++下，结构体可以有函数
-	{
-		age++;
-	}
-};
+//struct Person
+//{
+//	int age;
+//	void func()//C++下，结构体可以有函数
+//	{
+//		age++;
+//	}
+//};
 
-void test03()
-{
-	Person p; //创建结构体变量时候，可以省略struct
-	p.age = 100;
-	p.func();
-	cout << "p的age = " << p.age << endl;
-}
+//void test03()
+//{
+//	Person p; //创建结构体变量时候，可以省略struct
+//	p.age = 100;
+//	p.func();
+//	cout << "p的age = " << p.age << endl;
+//}
 
 //5 bool类型扩展  （bool只占一个字节）
 bool flag = true; //bool类型 代表 真和假 true  false
@@ -180,34 +181,78 @@ void test04()
 
 //7 const增强
 //全局const 和 C语言结论一样
-const int m_A = 100; //受到常量区的保护，运行修改失败
+//const int m_A = 100; //受到常量区的保护，运行修改失败
+//
+//void test05()
+//{
+//	//m_A = 200;
+//	//int* p = (int*)&m_A;
+//	
+//	//*p = 200;
+//	//局部const
+//	const int m_B = 100;
+//	//m_B =200;
+//	int* p = (int*)&m_B;
+//	*p = 200;
+//	cout << "m_B = " << m_B << endl;
+//
+//	int arr[m_B]; //C++下const修饰的变量 称为常量，可以初始化数组
+//}
+	
+//8 C++const修饰的全局变量默认是内部链接	
+//void test06()
+//{
+//	extern const int g_b ;
+//	cout << "g_b = " << g_b << endl;
+//}
 
-void test05()
+//9 const 分配内存情况
+//1 对const变量取 地址，会分配内存
+void test07()
 {
-	//m_A = 200;
-	//int* p = (int*)&m_A;
-	
-	//*p = 200;
-	//局部const
-	const int m_B = 100;
-	//m_B =200;
-	int* p = (int*)&m_B;
-	*p = 200;
-	cout << "m_B = " << m_B << endl;
-
-	int arr[m_B]; //C++下const修饰的变量 称为常量，可以初始化数组
+	const int a = 10;
+	int* p = (int*)&a;
 }
-	
-	
+//2 使用普通变量初始化const变量
+void test08()
+{
+	int a = 10;
+	const int b = a;//变量初始化可以修改
 
+	int* p = (int*)&b;
+	*p = 1000;
+	cout << "b=" << b << endl;
+}
+//3 对于自定义的数据类型
+struct Person
+{
+	string m_Name ;
+	int m_Age ;
+};
+void test09()
+{
+	const Person p = {"a",0};
+	//p.m_Age = 10;
+	Person* pp = (Person*)&p;
+	pp->m_Name = "Tom ";
+	(*pp).m_Age = 10;
+	cout << "姓名：  "  << p.m_Name << "年龄:  " << p.m_Age << endl;
+}
+
+//尽量用const 替换#define
 
 int main()
 {
 	//test03();
-	test05();
+	//test05();
+	//test06();
+	test09();
 	system("pause");
 	return EXIT_SUCCESS;
 }
+
+
+
 
 
 

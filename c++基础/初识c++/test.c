@@ -67,8 +67,18 @@
 //
 //	//int arr[m_B]; 在C语言下，m_B是伪常量 不可以初始化数组
 //}
+
+// C语言下const修饰全局变量默认认识外部链接属性
+
+//int main()
+//{
+//	extern const int g_a;
 //
-//
+//	printf("%d\n", g_a);
+//	return EXIT_SUCCESS;
+//}
+
+
 //
 //int main()
 //{
