@@ -120,13 +120,91 @@ using namespace std;//使用  标准 命名空间
 
 //1 全局变量检测增强
 // 在C中不会报错 ，C++会报错
-int a;
-int a = 10;
+//int a;
+//int a = 10;
 
-//2 函数检测增强
+//2 函数检测增强 ，返回值检测，形参类型检测，函数调用参数个数检测
+int getRectS(int w, int h)
+{
+	return w * h;
+}
+void test01()
+{
+	printf("%d\n", getRectS( 10, 10));
+}
+
+//3 类型转换检测增强
+void test02()
+{
+	char* p = (char*)malloc(64);
+}
+
+//4 struct增强
+
+struct Person
+{
+	int age;
+	void func()//C++下，结构体可以有函数
+	{
+		age++;
+	}
+};
+
+void test03()
+{
+	Person p; //创建结构体变量时候，可以省略struct
+	p.age = 100;
+	p.func();
+	cout << "p的age = " << p.age << endl;
+}
+
+//5 bool类型扩展  （bool只占一个字节）
+bool flag = true; //bool类型 代表 真和假 true  false
+
+
+//6 三目运算符增强
+void test04()
+{
+	int a = 10;
+	int b = 20;
+	
+	printf("%d\n", a > b ? a : b);
+
+	a > b ? a : b = 100;//C++下返回的是变量，C语言下返回的是值
+
+	a > b ? a : *( & b) = 100; //等价C的写法
+
+	printf("%d\n", a );
+	printf("%d\n", b );
+}
+
+//7 const增强
+//全局const 和 C语言结论一样
+const int m_A = 100; //受到常量区的保护，运行修改失败
+
+void test05()
+{
+	//m_A = 200;
+	//int* p = (int*)&m_A;
+	
+	//*p = 200;
+	//局部const
+	const int m_B = 100;
+	//m_B =200;
+	int* p = (int*)&m_B;
+	*p = 200;
+	cout << "m_B = " << m_B << endl;
+
+	int arr[m_B]; //C++下const修饰的变量 称为常量，可以初始化数组
+}
+	
+	
+
 
 int main()
 {
+	//test03();
+	test05();
 	system("pause");
 	return EXIT_SUCCESS;
 }
