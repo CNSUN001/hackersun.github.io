@@ -95,8 +95,8 @@ public:
 	int m_Count = 0;
 
 private:
-	Printer() { m_Count = 0; };
-	Printer(const Printer& p) {};
+	Printer() { m_Count = 0; }
+	Printer(const Printer& p) {}
 
 	static Printer* printer;
 };
