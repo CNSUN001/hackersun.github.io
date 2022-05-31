@@ -23,7 +23,9 @@ void test01()
 	}
 
 	arr2.setData(0, 1000);
-
+	  
+	arr[0] = 1000;
+	cout << arr[0] << endl;
 }
 
 int main()

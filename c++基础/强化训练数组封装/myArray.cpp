@@ -74,3 +74,8 @@
 	
 	}
 
+	int& MyArray::operator[](int index)
+	{
+		return this->pAddress[index]; //*(this->pAddress+index)
+	}
+

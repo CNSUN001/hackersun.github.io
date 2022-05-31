@@ -31,6 +31,8 @@ public:
 
 	~MyArray();
 
+	//重载[]运算符
+	int& operator[](int index);
 private:
 	int m_Capacity;//数组容量
 	int m_Size;//数组大小

@@ -190,7 +190,7 @@ public:
 
 	void showAge()
 	{
-		cout << "年龄位：" << this->m_Age << endl;
+		cout << "年龄：" << this->m_Age << endl;
 	}
 
 	~Person()
@@ -267,7 +267,7 @@ int main()
 #endif
 
 
-#if 0
+
 //赋值运算符=的重载
 #define _CRT_SECURE_NO_WARNINGS 1
 #include <iostream>
@@ -354,4 +354,4 @@ int main()
 	system("pause");
 	return EXIT_SUCCESS;
 }
-#endif
+
