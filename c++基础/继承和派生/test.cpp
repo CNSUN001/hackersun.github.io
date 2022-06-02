@@ -420,6 +420,8 @@ int main()
 #endif
 
 
+
+#if 0
 #define _CRT_SECURE_NO_WARNINGS 1
 #include <iostream>
 using namespace std;
@@ -483,6 +485,54 @@ int main()
 {
 	//test01();
 	test02();
+	system("pause");
+	return EXIT_SUCCESS;
+}
+#endif
+
+
+//多继承基本语法
+
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <iostream>
+using namespace std;
+ 
+class Base1
+{
+public:
+	Base1()
+	{
+		this->m_A = 10;
+	}
+	int m_A;
+};
+
+class Base2
+{
+public:
+	Base2()
+	{
+		this->m_B = 20;
+	}
+	int m_B;
+};
+
+//多继承
+class Son :public Base1, public Base2
+{
+public:
+	int m_C;
+	int m_D;
+};
+
+void test01()
+{
+	cout << "sizeof Son = " << sizeof(Son) << endl;
+}
+
+int main()
+{
+	test01();
 	system("pause");
 	return EXIT_SUCCESS;
 }
