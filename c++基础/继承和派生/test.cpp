@@ -490,7 +490,7 @@ int main()
 }
 #endif
 
-
+#if 0
 //多继承基本语法
 
 #define _CRT_SECURE_NO_WARNINGS 1
@@ -512,9 +512,9 @@ class Base2
 public:
 	Base2()
 	{
-		this->m_B = 20;
+		this->m_A = 20;
 	}
-	int m_B;
+	int m_A;
 };
 
 //多继承
@@ -528,11 +528,101 @@ public:
 void test01()
 {
 	cout << "sizeof Son = " << sizeof(Son) << endl;
+	Son s;
+	//当多继承有同名的成员，用作用域区分
+	cout << s.Base1::m_A << endl;
+	cout << s.Base2::m_A << endl;
 }
 
 int main()
 {
 	test01();
+	system("pause");
+	return EXIT_SUCCESS;
+}
+#endif
+
+
+#if 0
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <iostream>
+using namespace std;
+
+//菱形继承与虚继承
+//两个派生类继承同一个基类而又有某个类同时继承这两个派生类
+
+//动物类
+class Animal
+{
+public:
+	int m_Age;
+};
+
+//羊类
+class Sheep :virtual public Animal
+{};
+
+//鸵类
+class Tuo:virtual public Animal
+{};
+
+//羊驼
+class SheepTuo:public Sheep,public Tuo
+{
+};
+
+void test01()
+{
+	SheepTuo st;
+	st.Sheep::m_Age = 10;
+	st.Tuo::m_Age = 20;
+
+	cout << "sheep::m_Age = " << st.Sheep::m_Age << endl;
+	cout << "Tuo::m_Age = " << st.Tuo::m_Age << endl;
+	cout << "age = " << st.m_Age << endl;
+
+	//当发生虚继承后，sheep和tuo类中继承了一个vbptr指针 虚基类指针
+	//指向一个虚基本表 vbtable
+	//虚基本表 记录了偏移量，可以通过偏移量 找到唯一的m_Age
+}
+
+void test02()
+{
+	SheepTuo st;
+	st.m_Age = 10;
+
+	//通过Sheep找到 偏移量
+	//*(int *)&st 解引用到了 虚基表
+	cout << *((int*)*(int*)&st + 1) << endl;
+
+	//通过Tuo找到 偏移量
+	cout << *((int*)*((int*)&st + 1) + 1) << endl;
+
+	//通过偏移量访问数据
+	cout << "m_Age = " << ((Animal*)((char*)&st + *((int*)*(int*)&st + 1)))->m_Age << endl;
+	cout << "m_Age = " << *((int*)((char*)&st + *((int*)*(int*)&st + 1))) << endl;
+
+
+}
+
+int main()
+{
+	test02();
+	//test01();
+	system("pause");
+	return EXIT_SUCCESS;
+}
+#endif
+
+
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <iostream>
+using namespace std;
+
+//虚继承实现原理
+
+int main()
+{
 	system("pause");
 	return EXIT_SUCCESS;
 }
