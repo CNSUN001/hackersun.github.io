@@ -621,8 +621,47 @@ using namespace std;
 
 //虚继承实现原理
 
+class A
+{
+public:
+	int a;
+};
+
+class B :virtual public A //大小为12，变量a,b共8字节，虚基类表指针4  
+{
+public:
+	int b;
+};
+
+class C :virtual public A
+{
+public:
+	int c;
+};
+
+class D:public B, public C //24,变量a,b,c,d共16，B的虚基类指针4，C的虚基类指针4
+{
+public:
+	int d;
+};
+
+void test01()
+{
+	A a;
+	B b;
+	C c;
+	D d;
+	cout << sizeof(a) << endl;
+	cout << sizeof(b) << endl;
+	cout << sizeof(c) << endl;
+	cout << sizeof(d) << endl;
+	system("pause");
+}
+
+
 int main()
 {
+	test01();
 	system("pause");
 	return EXIT_SUCCESS;
 }
