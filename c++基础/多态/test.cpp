@@ -4,6 +4,7 @@
 
 //静态多态和动态多态的区别就是函数地址是早绑定（静态联编）还是晚绑定（动态联编）。
 
+
 #define _CRT_SECURE_NO_WARNINGS 1
 #include <iostream>
 using namespace std;
@@ -11,10 +12,15 @@ using namespace std;
 class Animal
 {
 public:
-	virtual	void speak() //虚函数
+		virtual void speak() //虚函数   vfptr-虚函数指针 v-virtual  f-function ptr-pointer 指向虚函数表（vftable）
 	{
+		//子类重写会覆盖父类虚函数表里的地址
 		cout << "动物在说话" << endl;
 	}
+		virtual void eat(int a)
+		{
+			cout << "动物在吃饭" << endl;
+		}
 };
 
 class Cat :public Animal
@@ -24,7 +30,11 @@ public:
 	{
 		cout << "小猫在说话" << endl;
 	}
-};
+	virtual void eat(int a)
+	{
+		cout << "小猫在吃饭" << endl;
+	}
+}; 
 
 class Dog :public Animal
 {
@@ -57,10 +67,25 @@ void test01()
 	doSpeak(dog);
 }
 
+void test02()
+{
+	cout << "sizeof Animal = " << sizeof (Animal) << endl;
+
+	Animal* animal = new Cat;
+	animal->speak();
+	//解引用到虚函数表*(int*)animal
+	((void(*)())(*(int*)*(uintptr_t*)animal))();    //typedef unsigned int uintptr_t;
+
+	//C/C++默认调用惯例 _cdecl
+	//真实调用管理 _stdcall
+	//typedef void(_stdcall*FUNPOINT)(int);
+	//(FUNPOINT(*((int*)*(int*)animal+1)))(10);
+}
+
 int main()
 {
-	test01();
+	//test01();
+	test02();
 	system("pause");
 	return EXIT_SUCCESS;
 }
-
