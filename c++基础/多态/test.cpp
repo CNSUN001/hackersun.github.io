@@ -76,6 +76,7 @@ void test02()
 	//解引用到虚函数表*(int*)animal
 	((void(*)())(*(int*)*(uintptr_t*)animal))();    //typedef unsigned int uintptr_t;
 
+	((void(*)())(* (int*)(*(int*)animal)))();
 	//C/C++默认调用惯例 _cdecl
 	//真实调用管理 _stdcall
 	//typedef void(_stdcall*FUNPOINT)(int);
