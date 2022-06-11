@@ -2,27 +2,86 @@
 #include <iostream>
 using namespace std;
 
-//实现通用排序
-template<class T>//typename 和class一样
-void mySort(T arr[],int len)
+//实现通用排序(冒泡排序)
+//template<class T>//typename 和class一样
+//void mySort(T arr[],int len)
+//{
+//	int flag = 1;
+//	for (int i = 0; i < len; i++)
+//	{
+//		for (int j = 0; j < len - i - 1; j++)
+//		{
+//			if (arr[j] > arr[j+1])
+//			{
+//				int  temp = arr[j];
+//				arr[j] = arr[j+1];
+//				arr[j+1] = temp;
+//				flag = 0;
+//			}
+//		}
+//		if (flag)
+//			break;
+//	}
+//}
+
+//(选择排序)
+template<class T>
+void mySwap(T& a, T& b)
 {
-	int flag = 1;
+	T temp = a;
+	a = b;
+	b = temp;
+}
+
+
+template< class T >
+
+void mySort(T arr[], int len)
+{
+
 	for (int i = 0; i < len; i++)
 	{
-		for (int j = 0; j < len - i - 1; j++)
+		int max = i;
+		for (int j = i + 1; j < len; j++)
 		{
-			if (arr[j] > arr[j+1])
+			if (arr[max] < arr[j])
 			{
-				int  temp = arr[j];
-				arr[j] = arr[j+1];
-				arr[j+1] = temp;
-				flag = 0;
+				max = j;
 			}
 		}
-		if (flag)
-			break;
+
+		//判断 算出的max和开始认定的i是否一致
+		if (i != max)
+		{
+			mySwap(arr[i], arr[max]);
+		}
 	}
 }
+
+
+//template< class  T > // typename 和 class 一样
+//void mySort(T arr[], int len)
+//{
+//	for (int i = 0; i < len; i++)
+//	{
+//		int max = i;
+//		for (int j = i + 1; j < len; j++)
+//		{
+//			if (arr[max] < arr[j])
+//			{
+//				max = j;
+//			}
+//		}
+//
+//		//判断 算出的max和开始认定的i是否一致，如果不同交换数据
+//		if (i != max)
+//		{
+//			mySwap(arr[i], arr[max]);
+//		}
+//	}
+//
+//}
+
 
 template<class T>
 void printArray(T arr[], int len)
