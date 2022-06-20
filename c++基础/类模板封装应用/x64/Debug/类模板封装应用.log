@@ -1,0 +1,7 @@
+﻿  test.cpp
+D:\hackersun.github.io\c++基础\类模板封装应用\myArray.hpp(12,1): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+D:\hackersun.github.io\c++基础\类模板封装应用\myArray.hpp(51): message : see reference to class template instantiation 'myArray<T>' being compiled
+D:\hackersun.github.io\c++基础\类模板封装应用\myArray.hpp(12,1): warning C4183: 'MyArray': missing return type; assumed to be a member function returning 'int'
+D:\hackersun.github.io\c++基础\类模板封装应用\myArray.hpp(20,1): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+D:\hackersun.github.io\c++基础\类模板封装应用\myArray.hpp(20,1): warning C4183: 'MyArray': missing return type; assumed to be a member function returning 'int'
+D:\hackersun.github.io\c++基础\类模板封装应用\myArray.hpp(41,54): error C3861: 'Capacity': identifier not found
