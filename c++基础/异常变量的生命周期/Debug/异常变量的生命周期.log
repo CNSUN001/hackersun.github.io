@@ -1,0 +1,3 @@
+﻿  test.cpp
+D:\hackersun.github.io\c++基础\异常变量的生命周期\test.cpp(40,22): warning C4101: 'e': unreferenced local variable
+  异常变量的生命周期.vcxproj -> D:\hackersun.github.io\c++基础\异常变量的生命周期\Debug\异常变量的生命周期.exe

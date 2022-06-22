@@ -16,6 +16,19 @@ public:
 	}
 };
 
+class Person
+{
+public:
+	Person()
+	{
+		cout << "Person的默认构造函数调用" << endl;
+	}
+	~Person()
+	{
+		cout << "Person的析构函数调用" << endl;
+	}
+};
+
 int myDivision(int a,int b)
 {
 	if (b == 0)
@@ -23,9 +36,13 @@ int myDivision(int a,int b)
 		//return -1;
 		//throw - 1;//抛出int类型的异常 如果不处理异常会自动调用terminate函数，让程序中断
 		//throw 'a';//抛出char类型异常
-		MyException a;
-		throw a;
-		//throw MyException();//抛出 MyException匿名对象
+		//MyException a;
+		//throw a;
+
+		//从try代码块开始，到throw抛出异常之前，所有栈上的数据都会被释放掉，这个过程叫栈解旋
+		Person p1;
+		Person p2;
+		throw MyException();//抛出 MyException匿名对象
 	}
 	return a / b;
 }
