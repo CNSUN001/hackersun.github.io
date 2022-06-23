@@ -113,14 +113,73 @@ void test06()
 	cout << buf << endl;
 }
 
+//案例1
+//判断用户输入的内容是字符串还是数字
+void test07()
+{
+	cout << "输入" << endl;
+	char c = cin.peek();
+	if (c >= '0' && c <= '9')
+	{
+		int num;
+		cin >> num;
+		cout << "输入的是数字：" << num << endl;
+	}
+	else
+	{
+		char buf[1024] = { 0 };
+		cin >> buf;
+		cout << "字符串：" << buf << endl;
+	}
+}
+
+//案例2
+//用户输入 0-10 数字，如果输入有误，重新输入
+void test08()
+{
+	cout << "请输入0-10" << endl;
+	int num = 1;
+
+	while (true)
+	{
+		cin >> num;
+		if (num >= 0 && num <= 10)
+		{
+			if (cin.fail() == 1)
+			{
+				//清空缓冲区 重制标志位
+				cin.clear();
+				cin.sync();
+				cin.ignore();//缓冲区还有给/n要忽略掉
+				cout << "输入有误，重新输入" << endl;
+				cout << "cin.fail() = " << cin.fail() << endl;
+				continue;
+
+			}
+			cout << "输入正确 值为：" << num << endl;
+			break;
+		}
+	
+		cout << "输入有误，重新输入" << endl;
+	}
+
+}
+
+
+
+
+
 int main()
 {
 	//test01();
-	//test02();
+	//test02(); 
 	//test03();
 	//test04();
 	//test05();
-	test06();
+	//test06();
+	//test07();
+	test08();
+	
 	system("pause");
 	return EXIT_SUCCESS;
 }
