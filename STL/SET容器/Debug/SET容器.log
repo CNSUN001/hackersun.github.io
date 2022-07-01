@@ -1,0 +1,3 @@
+﻿  test.cpp
+D:\hackersun.github.io\hackersun.github.io\STL\SET容器\test.cpp(112,15): warning C4834: discarding return value of function with 'nodiscard' attribute
+  SET容器.vcxproj -> D:\hackersun.github.io\hackersun.github.io\STL\SET容器\Debug\SET容器.exe
