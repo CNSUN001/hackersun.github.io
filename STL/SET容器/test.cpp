@@ -45,6 +45,17 @@ void printSet(const set<int>&s)
 	cout << endl;
 }
 
+void printMultiset(const multiset<int>& s)
+{
+	for (multiset<int>::const_iterator it = s.begin(); it != s.end(); it++)
+	{
+		cout << *it << " ";
+	}
+	cout << endl;
+}
+
+
+
 void test01()
 {
 	set<int>s;
@@ -109,7 +120,6 @@ void test02()
 	cout << "lower_bound(keyElem)找到>=30的元素:" << *pos2 << endl;
 
 	//upper_bound(keyElem);//返回第一个key>keyElem元素的迭代器。
-	s.upper_bound(30);
 	set<int>::iterator pos3 = s.upper_bound(30);
 	cout << "upper_bound(keyElem)找到>=30的元素:" << *pos3 << endl;
 
@@ -148,11 +158,128 @@ void test03()
 
 }
 
+void test04()
+{
+	//set容器不允许插入相同元素
+	set<int> s;
+	pair<set<int>::iterator , bool>ret = s.insert(10);
+
+	if (ret.second)
+	{
+		cout << "第一次插入成功" << endl;
+	}
+	else
+	{
+		cout << "第一次插入失败" << endl;
+	}
+
+	ret = s.insert(10);
+
+	if (ret.second)
+	{
+		cout << "第二次插入成功" << endl;
+	}
+	else
+	{
+		cout << "第二次插入失败" << endl;
+	}
+
+	printSet(s);
+
+
+	//	multiset 允许插入重复的key值
+	multiset<int>ms;
+	ms.insert(10);
+	ms.insert(10);
+	ms.insert(10);
+	printMultiset(ms);
+
+}
+
+class myCompareInt
+{
+public:
+	//仿函数 就是重载()
+	bool operator()(int v1, int v2)const
+	{
+		return v1 > v2;
+	}
+};
+
+void test05()
+{
+	//set容器的排序规则要在插入之前指定
+	set<int, myCompareInt>s;
+	s.insert(10);
+	s.insert(50);
+	s.insert(30);
+	s.insert(20);
+	s.insert(40);
+
+	for (set<int, myCompareInt>::iterator it = s.begin(); it != s.end(); it++)
+	{
+		cout << *it << " ";
+	}
+	cout << endl;
+}
+
+//对于自定义类型
+class Person
+{
+public:
+	Person(string name,int age):m_Name(name),m_Age(age)
+	{}
+	string m_Name;
+	int m_Age;
+
+	//重载<指定排序规则
+	//bool operator<(const Person&p)const
+	//{
+	//	return  this->m_Age<p.m_Age;
+	//}
+};
+
+//利用仿函数 指定自定义数据类型的排序规则
+class myComparePerson
+{
+public:
+	bool operator()(const Person& p1, const Person& p2)const
+	{
+		return p1.m_Age < p2.m_Age;
+	}
+};
+
+void test06()
+{
+	//利用仿函数 指定自定义数据类型的排序规则
+
+	set<Person, myComparePerson> s;
+	Person p1("aaa", 10);
+	Person p2("bbb", 40);
+	Person p3("ccc", 20);
+	Person p4("ddd", 30);
+	Person p5("eee", 50);
+
+	s.insert(p1);
+	s.insert(p2);
+	s.insert(p3);
+	s.insert(p4);
+	s.insert(p5);
+
+	for (set<Person, myComparePerson>::iterator it = s.begin(); it != s.end(); it++)
+	{
+		cout << "姓名：" << (*it).m_Name << "年龄：" << (*it).m_Age << endl;
+	}
+}
+
 int main()
 {
 	//test01();
 	//test02();
-	test03();
+	//test03();
+	//test04();
+	//test05();
+	test06();
 	system("pause");
 	return EXIT_SUCCESS;
 }
