@@ -30,9 +30,11 @@ mapStu[5] = "ะกอ๕";
 
 void printMap(const map<int,int>& m)
 {
-	for (map<int, int>::const_iterator it = m.begin(); it != m.end(); it++)
+	//map<int, int>::const_iterator it = m.begin(); it != m.end(); it++
+	for (auto& it:m)
 	{
-		cout << "key = " << it->first << " value = " << (*it).second<< endl;
+		cout << "key = " << it.first << " value = " << it.second << endl;
+		//cout << "key = " << it->first << " value = " << (*it).second<< endl;
 	}
 }
 
@@ -191,10 +193,10 @@ void test04()
 
 int main()
 {
-	//test01();
+	test01();
 	//test02();
 	//test03();
-	test04();
+	//test04();
 	system("pause");
 	return EXIT_SUCCESS;
 }

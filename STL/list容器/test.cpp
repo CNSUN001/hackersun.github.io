@@ -28,9 +28,10 @@ remove(elem);//删除容器中所有与elem值匹配的元素。
 void printList(const list<int>&L)
 {
 	//正序遍历
-	for (list<int>::const_iterator it = L.begin(); it != L.end(); it++)
+	//list<int>::const_iterator it = L.begin(); it != L.end(); it++
+	for (auto it:L)
 	{
-		cout << *it << " ";
+		cout << it << " ";  //cout << *it << " "; 
 	}
 	cout << endl;
 }
@@ -234,11 +235,11 @@ void test06()
 int main()
 {
 	//test01();
-	//test02();
+	test02();
 	//test03();
 	//test04();
 	//test05();
-	test06();
+	//test06();
 	system("pause");
 	return EXIT_SUCCESS;
 }
