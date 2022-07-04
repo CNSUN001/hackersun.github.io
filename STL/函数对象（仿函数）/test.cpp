@@ -1,6 +1,7 @@
 
 #define _CRT_SECURE_NO_WARNINGS 1
 #include <iostream>
+#include <map>
 using namespace std;
 
 //1.函数对象(仿函数)是一个类，不是一个函数。
@@ -46,25 +47,33 @@ void test02()
 }
 
 //函数对象可以作为函数参数
-
-void doPrint(MyPrint m)
-{
-
+void doPrint(MyPrint myPrint,int num)
+{	
+	myPrint(num);
 }
+
 
 void test03()
 {
-	
+	doPrint(MyPrint(), 1000);
 }
 
 int main()
 {
 	//test01();
-	test02();
+	//test02();
+	//test03();
+
+
+	map<int, int> m;
+	m.insert(make_pair(1, 2));
+	m.insert(make_pair(2, 3));
+	m.insert(make_pair(3, 4));
+
+	cout << m.at(2) << endl;
+
 	system("pause");
 	return EXIT_SUCCESS;
 }
-
-
 
 
