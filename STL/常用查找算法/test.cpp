@@ -134,14 +134,6 @@ void test04()
 	}
 }
 
-class comparePerson2:public binary_function<const Person&, const Person&, bool>
-{
-public:
-	bool operator()(const Person&p1, const Person& p2)const
-	{
-		return  p1.m_Name == p2.m_Name && p1.m_Age == p2.m_Age;
-	}
-};
 
 void test05()
 {
@@ -170,13 +162,78 @@ void test05()
 	}
 }
 
+/*
+binary_search算法 二分查找法
+注意: 在无序序列中不可用
+*/
+
+void test06()
+{
+	vector<int>v;
+	for (int i = 0; i < 10; i++)
+	{
+		v.push_back(i);
+	}
+	bool ret = binary_search(v.begin(), v.end(), 2);
+	if (ret)
+	{
+		cout << "存在数据2" << endl;
+	}
+	else
+	{
+		cout << "未找到数据2" << endl;
+	}
+}
+
+
+/*
+count_if算法 统计元素出现次数
+@param beg 容器开始迭代器
+@param end 容器结束迭代器
+@param  value回调函数或者谓词(返回bool类型的函数对象)
+@return int返回元素个数
+*/
+
+class GreaterThan3
+{
+public:
+	bool operator()(int val)
+	{
+		return val >= 3;
+	}
+};
+
+
+
+void test07()
+{
+	vector<int>v;
+	for (int i = 0; i < 10; i++)
+	{
+		v.push_back(i);
+	}
+	v.push_back(3);
+	v.push_back(3);
+	v.push_back(3);
+	int num = count(v.begin(), v.end(), 3);
+	cout << "3的个数为" << num << endl;
+
+	//统计大于等于3的个数
+	num = count_if(v.begin(), v.end(), GreaterThan3());
+
+	cout << "大于等于3的个数为：" << num << endl;
+	
+}
+
 int main()
 {
 	//test01();
 	//test02();
 	//test03();
 	//test04();
-	test05();
+	//test05;
+	//test06();
+	test07();
 	system("pause");
 	return EXIT_SUCCESS;
 }
