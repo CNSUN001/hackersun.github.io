@@ -67,12 +67,24 @@ void test03()
 
 	cout << "交换前：" << endl;
 	copy(v.begin(), v.end(), ostream_iterator<int>(cout, " "));
+	cout << endl;
+	copy(v2.begin(), v2.end(), ostream_iterator<int>(cout, " "));
+	cout << endl;
+
+	cout << "交换后:" << endl;
+	swap(v, v2);
+	copy(v.begin(), v.end(), ostream_iterator<int>(cout, " "));
+	cout << endl;
+	copy(v2.begin(), v2.end(), ostream_iterator<int>(cout, " "));
+	cout << endl;
+
 }
 
 int main()
 {
 	//test01();
-	test02();
+	//test02();
+	test03();
 	system("pause");
 	return EXIT_SUCCESS;
 }
