@@ -1,2 +1,14 @@
 ﻿  contact.c
-  通讯录.vcxproj -> D:\hackersun.github.io\通讯录\Debug\通讯录.exe
+  test.c
+  正在生成代码...
+  contact.h
+Debug\contact.obj : warning LNK4042: 对象被多次指定；已忽略多余的指定
+test.obj : error LNK2019: 无法解析的外部符号 _InitContact，函数 _main 中引用了该符号
+test.obj : error LNK2019: 无法解析的外部符号 _AddContact，函数 _main 中引用了该符号
+test.obj : error LNK2019: 无法解析的外部符号 _DelContact，函数 _main 中引用了该符号
+test.obj : error LNK2019: 无法解析的外部符号 _PrintContact，函数 _main 中引用了该符号
+test.obj : error LNK2019: 无法解析的外部符号 _SortContact，函数 _main 中引用了该符号
+test.obj : error LNK2019: 无法解析的外部符号 _SearchContact，函数 _main 中引用了该符号
+test.obj : error LNK2019: 无法解析的外部符号 _ModifyContact，函数 _main 中引用了该符号
+test.obj : error LNK2019: 无法解析的外部符号 _DestoryContact，函数 _main 中引用了该符号
+D:\hackersun.github.io\hackersun.github.io\通讯录\Debug\通讯录.exe : fatal error LNK1120: 8 个无法解析的外部命令

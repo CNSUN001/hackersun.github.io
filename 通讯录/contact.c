@@ -1,6 +1,5 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 
-
 #include "contact.h"
 
 //æ≤Ã¨∞Ê±æ ≥ı ºªØ
